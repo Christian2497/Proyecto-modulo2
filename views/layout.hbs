@@ -12,11 +12,15 @@
         </div>
         <ul class="nav-links">
             <li><a href="/">Home</a></li>
-            <li><a href="#">Audit</a></li>
-            <li><a href="#">News</a></li>
+            <li><a href="/audit">Audit</a></li>
+            <li><a href="/news">News</a></li>
+            {{#if isUserLoggedIn}}
+            <li><a href="/logout">Logout</a></li>
+            {{else}}
             <li><a href="/signup">Sign up</a></li>
             <li><a href="/login">Login</a></li>
-            <li><a href="#">Logout</a></li>
+            {{/if}}
+
         </ul>
         <div class="burger">
             <div class="line1"></div>

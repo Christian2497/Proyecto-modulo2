@@ -15,8 +15,8 @@ const jwt = require("jsonwebtoken");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-// var auditRouter = require('./routes/audit');
-
+var auditRouter = require('./routes/audit');
+var newsRouter = require('./routes/news');
 var app = express();
 
 require("./config/configDB");
@@ -33,7 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/', usersRouter);
-// app.use('/', auditRouter);
+app.use('/', auditRouter);
+app.use('/', newsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

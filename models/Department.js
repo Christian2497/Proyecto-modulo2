@@ -4,10 +4,9 @@ const Schema = mongoose.Schema;
 const departmentSchema = new Schema(
   {
     name: String,
-    email: String,
-    password: String,
-    img: { type: String, default: '...' },
-    department: [{ type: Schema.Types.ObjectId, ref: 'Department' }]
+    description: String,
+    employee: [{ type: Schema.Types.ObjectId, ref: 'Employee' }],
+    manager: [{ type: Schema.Types.ObjectId, ref: 'Manager' }]
   },
   {
     timestamps: true
