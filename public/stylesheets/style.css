@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-/* NAV */
+/* -------------- NAV ---------------*/
 nav{
   display: flex;
   justify-content: space-around;
@@ -56,7 +56,7 @@ nav{
   width: 100%;
 }
 
-/* SIGN UP*/
+/* -------------- SIGN UP ---------------*/
 .body-sg{
   background: url(/images/signup.jpeg)no-repeat center center;
   -webkit-background-size: cover;
@@ -65,6 +65,10 @@ nav{
   background-size: cover;
   height: 135vh;
   display: flex;
+  justify-content: center;
+}
+.container-sg{
+ margin-top: 150px; 
 }
 
 .wrap{
@@ -114,7 +118,7 @@ input[type=submit]:hover{
 }
 
 
-/* FOOTER */
+/* -------------- FOOTER ---------------*/
 footer{
   /*position: fixed;*/
   bottom: 0px;

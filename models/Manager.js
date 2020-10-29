@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const managerSchema = new Schema(
   {
-    username: String,
+    name: String,
+    lastName: String,
     email: String,
     password: String,
     img: { type: String, default: '...' },

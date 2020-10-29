@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const employeeSchema = new Schema(
   {
-    name: String,  
+    name: String,
+    lastName: String,
     email: String,
     password: String,
     img: { type: String, default: '...' },
