@@ -36,9 +36,8 @@ app.use('/', usersRouter);
 app.use('/', auditRouter);
 app.use('/', newsRouter);
 
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
+/* app.use(session({
+    secret: process.env.SECRET_SESSION,
     resave: true,
     saveUninitialized: false,
     store: new MongoStore({
@@ -46,7 +45,7 @@ app.use(
       ttl: 60 * 60 * 24 * 7,
     }),
   })
-);
+); */
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
