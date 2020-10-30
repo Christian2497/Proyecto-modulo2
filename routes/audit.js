@@ -33,6 +33,7 @@ router.get('/audit', async(req, res, next)=>{
       try{
          const deptFound = await Department.findById(req.params.id)
           .populate('manager')
+          .populate('employee')
           if(deptFound){
               res.render('valorate', { dept: deptFound });
           }
@@ -44,22 +45,39 @@ router.get('/audit', async(req, res, next)=>{
     });
 
     router.post("/audit/:id", async (req, res, next) => {
-    const {name, lastName, departmentId} = req.body;
-
+    const {select} = req.body;
+    const {name, lastName} = req.body;
+    
+    if(select == "manager"){
     try{
-       const newManager = await Manager.create({
+      
+      const newManager = await Manager.create({
             name: name,
             lastName: lastName,
-            departmentId: departmentId
-        })
-       
-        const addManager = await Department.findByIdAndUpdate(req.params.id, {$push: {manager: newManager._id}})
-
-        res.redirect("/audit");
+      }) 
+      const addManager = await Department.findByIdAndUpdate(req.params.id, {$push: {manager: newManager._id}});
+      res.redirect("audit/" + req.params.id);
 
     } catch (error) {
       next(error);
     }
-    });
+  }
+  
 
+    if(select == "employee"){
+      try{
+        
+        const newEmployee = await Employee.create({
+              name: name,
+              lastName: lastName,
+        }) 
+        const addEmployee = await Department.findByIdAndUpdate(req.params.id, {$push: {employee: newEmployee._id}});
+        res.redirect("/audit/" + req.params.id);
+  
+      } catch (error) {
+        next(error);
+      }
+      } 
+  });
+  
 module.exports = router;

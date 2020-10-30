@@ -9,19 +9,30 @@
     <label>Last name</label>
     <input type="text" name="lastName" >
 
-    <label>Department</label>
-    <input type="text" name="departmentId" >
+{{!--     <label>Department</label>
+    <input type="text" name="departmentId" > --}}
+  <label for="select-sg"> Select </label>
+        <select type="select" name="select" id="select-sg" placeholder=""> 
+            <option value="manager">Manager</option>
+            <option value="employee">Employee</option>
+        </select>
 
     <input type="submit" value="Create">
 </form>
 
 <div>
-  {{#each dept}}
     <div>
-      <h4>{{this.name}}</h4>
-      <a href="/audit/{{this._id}}" >Audit</a>
+      <h4>{{dept.description}}</h4>
     </div>
-  {{else}}
-    <p>There are no dept</p>
-  {{/each}}
+    <div>
+    <h2> Managers: </h2>
+    {{#each dept.manager}}
+    <li>{{this.name}}</li>
+    {{/each}}
+    <h2> Employees: </h2>
+    {{#each dept.employee}}
+    <li>{{this.name}}</li>
+    {{/each}}
+    </div>
+    {{!-- <p>There are no dept</p> --}}
 </div>
