@@ -1,7 +1,7 @@
 <h1>Departments</h1>
 
 <h2>Add dept</h2>
-<form action="/audit/" method="post">
+<form action="/audit" method="post">
 
     <label>Name</label>
     <input type="text" name="name" >
@@ -31,7 +31,7 @@
     <div>
       <h4>{{this.name}}</h4>
       <p>{{this.description}}</p>
-      <a href="/audit/{{this._id}}" >Audit</a>
+      <a href="/audit/{{this._id}}">Audit</a>
     </div>
   {{else}}
     <p>There are no dept</p>
