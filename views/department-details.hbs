@@ -31,7 +31,7 @@
     {{/each}}
     <h2> Employees: </h2>
     {{#each dept.employee}}
-    <li>{{this.name}}</li>
+    <li><a href="/audit/auditory/{{this.id}}">{{this.name}}</a></li>
     {{/each}}
     </div>
     {{!-- <p>There are no dept</p> --}}

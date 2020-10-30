@@ -35,7 +35,7 @@ router.get('/audit', async(req, res, next)=>{
           .populate('manager')
           .populate('employee')
           if(deptFound){
-              res.render('valorate', { dept: deptFound });
+              res.render('department-details', { dept: deptFound });
           }
         }catch(error){
          (error => {
@@ -79,5 +79,32 @@ router.get('/audit', async(req, res, next)=>{
       }
       } 
   });
+
+  router.get("/audit/auditory/:id", async (req, res, next) => {
+    try{
+    const employeeFound = await Employee.findById(req.params.id)
+          if(employeeFound){
+              res.render('valorate-user', { employee: employeeFound });
+          }
+        }catch(error) {
+          next(error);
+        }
+  });
+
+  router.post("/audit/auditory/:id", async (req, res, next) => {
+    try{
+    let newRate = {
+      teamUp: req.body.teamUp,
+      communication: req.body.communication,
+      puntuality: req.body.puntuality,
+      project: req.body.project
+    }
+    let{id} = req.params;
+      const addRate= await Employee.findByIdAndUpdate(id, {$push: {rate: newRate}});
+      res.redirect("/audit/auditory/" + req.params.id)
+  }catch(error){
+    console.log(error);
+  }
+  })
   
 module.exports = router;
