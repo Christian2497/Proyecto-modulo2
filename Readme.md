@@ -95,6 +95,45 @@ Proyecto-modulo-2/
 
 #### Routes
 
+- GET /
+  - Renders the homepage
+
+- GET /signup
+  - Renders sign up form
+  - Redirect / when user logged in
+
+- POST /signup
+  - Redirect / when user logged in
+  - body:
+    - name
+    - email
+    - password
+    - select
+
+- GET /login
+  - Redirect / when user logged in
+  - Render log in form
+
+- POST /login
+  - Redirect / when user logged in
+  - body:
+    - email
+    - password
+
+- GET /logout
+  - body:(empty)
+
+- GET /audit
+
+  - Render the audit page
+
+    
+
+- GET /news
+  - Render the news page
+
+
+
 
 
 
@@ -107,7 +146,7 @@ Proyecto-modulo-2/
 
   ```
     {
-      companyName: String,
+      name: String,
       email: String,
       password: String,
       img: { type: String, default: '...' },
@@ -129,7 +168,7 @@ Proyecto-modulo-2/
 
   ```
     {
-      username: String,
+      name: String,
       email: String,
       password: String,
       img: { type: String, default: '...' },
@@ -141,7 +180,7 @@ Proyecto-modulo-2/
 
   ```
     {
-      username: String,
+      name: String,
       email: String,
       password: String,
       img: { type: String, default: '...' },
