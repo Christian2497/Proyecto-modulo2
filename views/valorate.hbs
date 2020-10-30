@@ -1,2 +1,27 @@
-<h1>Valorate</h1>
+<h1>{{dept.name}}</h1>
 
+<h2>add manager or employee</h2>
+<form action="/audit/{{dept._id}}" method="post">
+
+    <label>Name</label>
+    <input type="text" name="name" >
+
+    <label>Last name</label>
+    <input type="text" name="lastName" >
+
+    <label>Department</label>
+    <input type="text" name="departmentId" >
+
+    <input type="submit" value="Create">
+</form>
+
+<div>
+  {{#each dept}}
+    <div>
+      <h4>{{this.name}}</h4>
+      <a href="/audit/{{this._id}}" >Audit</a>
+    </div>
+  {{else}}
+    <p>There are no dept</p>
+  {{/each}}
+</div>

@@ -99,7 +99,7 @@ if(select == "manager"){
         email: email,
         password: hashPass,
       });
-      res.redirect("/");
+      res.redirect("/login");
     } catch (error) {
       next(error);
     }

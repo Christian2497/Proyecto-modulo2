@@ -18,12 +18,6 @@ router.get('/audit', async(req, res, next)=>{
 
   router.post("/audit", async (req, res, next) => {
     const {name, description} = req.body;
-    // if (req.body.name === "" || req.body.description === "") {
-    //     res.render("audit", {
-    //       errorMessage: "Indicate a name and a description",
-    //     });
-    //     return;
-    //   }
     try{
         await Department.create({
             name: name,
@@ -35,15 +29,37 @@ router.get('/audit', async(req, res, next)=>{
     }
   });
 
-  router.get("/audit/:id", (req, res, next) =>{
-        Department.findById(req.params.id)
-          .then(dept => {
-            res.render('valorate', { dept: dept });
-          })
-          .catch(error => {
-            console.log('Error while retrieving movie details: ', error);
-          })
+  router.get("/audit/:id", async (req, res, next) =>{
+      try{
+         const deptFound = await Department.findById(req.params.id)
+          .populate('manager')
+          if(deptFound){
+              res.render('valorate', { dept: deptFound });
+          }
+        }catch(error){
+         (error => {
+              console.log('Error while retrieving movie details: ', error);
+            })
+      }
     });
 
+    router.post("/audit/:id", async (req, res, next) => {
+    const {name, lastName, departmentId} = req.body;
+
+    try{
+       const newManager = await Manager.create({
+            name: name,
+            lastName: lastName,
+            departmentId: departmentId
+        })
+       
+        const addManager = await Department.findByIdAndUpdate(req.params.id, {$push: {manager: newManager._id}})
+
+        res.redirect("/audit");
+
+    } catch (error) {
+      next(error);
+    }
+    });
 
 module.exports = router;

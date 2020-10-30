@@ -8,7 +8,7 @@ const managerSchema = new Schema(
     email: String,
     password: String,
     img: { type: String, default: '...' },
-    departmentId: [{ type: Schema.Types.ObjectId, ref: 'Department' }]
+    departmentId: String
   },
   {
     timestamps: true
