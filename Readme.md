@@ -61,8 +61,8 @@ Proyecto-modulo-2/
         │   └── www
         ├── config
         │   └── configDB.js
-        ├── middlewares
-        │   └── user-mid.js
+        ├── helpers
+        │   └── middleware.js
         ├── models
         │   ├── company.js
         │   ├── department.js
@@ -75,20 +75,23 @@ Proyecto-modulo-2/
         ├── routes
         │   ├── index.js
         │   ├── user.js
-        │   └── private
-        │       ├── dep.js
-        │       ├── "blog".js
+        │	├── news.js
+        │   ├── dep.js
+        │       
+        │       
         │
         └── views
             ├── error.hbs
             ├── index.hbs
             ├── layout.hbs
-            ├── user
+            ├── audit.hbs
+            ├── news.hbs
+            ├── users
             │   ├── login.hbs
             │   └── signup.hbs
-            └── private
-                ├── dep.hbs
-                ├── blog.hbs
+            ├── dep.hbs
+            └── news.hbs
+                
 ```
 
 
@@ -96,8 +99,9 @@ Proyecto-modulo-2/
 #### Routes
 
 - GET /
-  - Renders the homepage
-
+  
+- Renders the homepage
+  
 - GET /signup
   - Renders sign up form
   - Redirect / when user logged in
@@ -121,8 +125,9 @@ Proyecto-modulo-2/
     - password
 
 - GET /logout
-  - body:(empty)
-
+  
+- body:(empty)
+  
 - GET /audit
 
   - Render the audit page
@@ -130,11 +135,8 @@ Proyecto-modulo-2/
     
 
 - GET /news
+  
   - Render the news page
-
-
-
-
 
 
 
