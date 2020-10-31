@@ -51,7 +51,8 @@ nav{
 }
 /* --------------INDEX---------------*/
 
-.body-index{
+.body{
+  padding: 0 100px;
   background: url(/images/office.jpg)no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -59,6 +60,32 @@ nav{
   background-size: cover;
   height: 135vh;
   opacity: 0.8;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.body-index{
+  position: relative;
+  max-width: 600px;
+  padding: 50px;
+  background: rgba(255, 255, 255, .4);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .5); 
+  color: black; 
+}
+
+.body-index h2{
+  margin: 0 0 20px;
+  padding: 0;
+  font-size: 48px;
+  text-transform: uppercase;
+  color: blue;
+}
+
+.body-index p{
+  margin: 0 0 20px;
+  padding: 0;
+  font-size: 18px;
 }
 
 /* -------------- SIGN UP/LOGIN ---------------*/
@@ -123,6 +150,58 @@ nav{
   opacity: 0.7;
 }
 
+.select select{
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+.select{
+	max-width: 250px;
+	position: relative;
+}
+ 
+.select select{
+	display: inline-block;
+	width: 100%;
+	cursor: pointer;
+  	padding: 7px 10px;
+  	height: 42px;
+  	outline: 0; 
+  	border: 0;
+	border-radius: 0;
+	background: #f0f0f0;
+	color: black;
+	font-size: 1em;
+	color: black;
+	font-family: 
+	'Quicksand', sans-serif;
+	border:2px solid rgba(0,0,0,0.2);
+    border-radius: 12px;
+    position: relative;
+    transition: all 0.25s ease;
+}
+
+.select select:hover{
+	background: white;
+}
+
+.select i{
+	position: absolute;
+	right: 20px;
+	top: calc(50% - 13px);
+	width: 16px;
+	height: 16px;
+	display: block;
+	border-left:4px solid #2AC176;
+	border-bottom:4px solid #2AC176;
+	transform: rotate(-45deg); /* Giramos el cuadrado */
+	transition: all 0.25s ease;
+}
+
+.select:hover i{
+	margin-top: 3px;
+}
 
 /* -------------- FOOTER ---------------*/
 footer{
