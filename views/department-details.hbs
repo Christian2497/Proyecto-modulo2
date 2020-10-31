@@ -1,0 +1,38 @@
+<h1>{{dept.name}}</h1>
+
+<h2>add manager or employee</h2>
+<form action="/audit/{{dept._id}}" method="post">
+
+    <label>Name</label>
+    <input type="text" name="name" >
+
+    <label>Last name</label>
+    <input type="text" name="lastName" >
+
+{{!--     <label>Department</label>
+    <input type="text" name="departmentId" > --}}
+  <label for="select-sg"> Select </label>
+        <select type="select" name="select" id="select-sg" placeholder=""> 
+            <option value="manager">Manager</option>
+            <option value="employee">Employee</option>
+        </select>
+
+    <input type="submit" value="Create">
+</form>
+
+<div>
+    <div>
+      <h4>{{dept.description}}</h4>
+    </div>
+    <div>
+    <h2> Managers: </h2>
+    {{#each dept.manager}}
+    <li>{{this.name}}</li>
+    {{/each}}
+    <h2> Employees: </h2>
+    {{#each dept.employee}}
+    <li><a href="/audit/auditory/{{this.id}}">{{this.name}}</a></li>
+    {{/each}}
+    </div>
+    {{!-- <p>There are no dept</p> --}}
+</div>

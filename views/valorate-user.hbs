@@ -1,0 +1,41 @@
+<h1>Valorate </h1>
+
+<h1>{{employee.name}}</h1>
+
+<form action="/audit/auditory/{{employee._id}}" method="POST">
+<label for="teamUp"> Team up </label><br>
+<input type="radio" name="teamUp" value="1"> 1 
+<input type="radio" name="teamUp" value="2"> 2
+<input type="radio" name="teamUp" value="3"> 3
+<input type="radio" name="teamUp" value="4"> 4
+<input type="radio" name="teamUp" value="5"> 5
+
+<br>
+<label for="#"> Comunication </label> <br>
+<input type="radio" name="communication" value="1"> 1 
+<input type="radio" name="communication" value="2"> 2
+<input type="radio" name="communication" value="3"> 3
+<input type="radio" name="communication" value="4"> 4
+<input type="radio" name="communication" value="5"> 5
+
+<br>
+<label for="#"> Puntuality </label> <br>
+<input type="radio" name="puntuality" value="1"> 1 
+<input type="radio" name="puntuality" value="2"> 2
+<input type="radio" name="puntuality" value="3"> 3
+<input type="radio" name="puntuality" value="4"> 4
+<input type="radio" name="puntuality" value="5"> 5
+
+<br>
+<label for="#"> Project execution </label><br>
+<input type="radio" name="project" value="1"> 1 
+<input type="radio" name="project" value="2"> 2
+<input type="radio" name="project" value="3"> 3
+<input type="radio" name="project" value="4"> 4
+<input type="radio" name="project" value="5"> 5
+
+<input type="submit" name="submit" value="Submit">
+</form>
+
+
+<p>Average rate: {{employee.rate.[]}}</p>

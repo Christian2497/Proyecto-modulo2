@@ -6,7 +6,7 @@ const Manager = require("../models/Manager");
 const Company = require("../models/Company");
 const withAuth = require("../helpers/middleware");
 
-router.get('/news', function(req, res, next) {
+router.get('/news', withAuth, function(req, res, next) {
     res.render('news');
   });
 

@@ -8,7 +8,13 @@ const employeeSchema = new Schema(
     email: String,
     password: String,
     img: { type: String, default: '...' },
-    department: [{ type: Schema.Types.ObjectId, ref: 'Department' }]
+    department: [{ type: Schema.Types.ObjectId, ref: 'Department' }],
+    rate: [{
+      teamUp: Number,
+      communication: Number,
+      puntuality: Number,
+      project: Number,
+    }],
   },
   {
     timestamps: true

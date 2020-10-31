@@ -28,12 +28,12 @@
 <div class="body-sg">
     <div class="container-sg" >
     <div class="wrap">
-        <h2>Sign up</h2>
+        <h2 class="h2-lg">Sign up</h2>
         <form action="/signup" method="post">
-            <input type="text" name="name" placeholder="Name.." required>
-            <input type="text" name="lastName" placeholder="Last Name.." >
-            <input type="text" name="email" placeholder="Email.." required>
-            <input type="password" name="password" placeholder="Password.." required>
+            <input type="text" name="name" class="input-sg" placeholder="Name.." required>
+            <input type="text" name="lastName" class="input-sg" placeholder="Last Name.." >
+            <input type="text" name="email" class="input-sg" placeholder="Email.." required>
+            <input type="password" name="password" class="input-sg" placeholder="Password.." required>
 
             <label for="select">Algo </label>
             <select type="select" name="select" id="select-sg" placeholder=""> 
@@ -42,7 +42,7 @@
                 <option value="manager">Manager</option>
                 <option value="employee">Employee</option>
             </select>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" class="input-sg">
         </form>
             {{#if errorMessage}}
             {{errorMessage}}

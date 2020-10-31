@@ -248,6 +248,4 @@ router.get("/logout", withAuth, (req, res, next) => {
 });
 
 
-
-
 module.exports = router;
