@@ -110,8 +110,9 @@ nav{
 }
 
 .fotos-abajo{
-  padding-bottom: 50px;
-  padding-left: 60px;
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 40px;
 }
 
 /* -------------- SIGN UP/LOGIN ---------------*/
