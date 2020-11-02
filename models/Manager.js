@@ -7,8 +7,10 @@ const managerSchema = new Schema(
     lastName: String,
     email: String,
     password: String,
-    img: { type: String, default: '...' },
-    departmentId: String
+    starterDate: Date,
+    position: String,
+    age: Number,
+    img: { type: String, default: '/images/perfil2.jpeg' },
   },
   {
     timestamps: true

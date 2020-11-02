@@ -1,7 +1,21 @@
-<h1>Valorate </h1>
 
-<h1>{{employee.name}}</h1>
+<div>
+    <h3>Ficha</h3>
+    <img src="{{employee.img}}">
+    <p>{{employee.name}} {{employee.lastName}}</p>
+    <p>{{employee.age}} years old</p>
+    <p>{{employee.email}}</p>
+    <p>{{employee.position}}</p>
+    <p>{{employee.starterDate}}</p>
+    <a href="/audit/auditory/{{employee._id}}/edit?employee_id={{employee._id}}" class="p-add">Edit</a>
+</div>
+<hr>
 
+
+
+
+<div>
+    <h4>Audit</h4>
 <form action="/audit/auditory/{{employee._id}}" method="POST">
 <label for="teamUp"> Team up </label><br>
 <input type="radio" name="teamUp" value="1"> 1 
@@ -32,10 +46,27 @@
 <input type="radio" name="project" value="2"> 2
 <input type="radio" name="project" value="3"> 3
 <input type="radio" name="project" value="4"> 4
-<input type="radio" name="project" value="5"> 5
+<input type="radio" name="project" value="5"> 5 <br>
+
+{{!-- <label for="#"> Comments </label><br>
+<textarea type="text" name="comments" ></textarea><br> --}}
 
 <input type="submit" name="submit" value="Submit">
 </form>
 
+</div>
+<div>
+    <p>
+        Team up: {{employee.rate.[0].teamUp}}
+        Communication: {{employee.rate.[0].communication}}
+        Puntuality: {{employee.rate.[0].puntuality}}
+        Project execution: {{employee.rate.[0].project}}
+    </p>
+    <p>Average rate of last audit: {{avgRate}}</p>
 
-<p>Average rate: {{employee.rate.[]}}</p>
+      <p>Average rate of total audit: </p>
+</div>
+
+<form action="/audit/auditory/{{employee._id}}/delete" method="post">
+    <button type="submit" class="delete">DELETE</button>
+</form>

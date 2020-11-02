@@ -16,12 +16,19 @@
             <form action="/audit/{{dept._id}}" method="post">
                 <input type="text" name="name" class="input-add" placeholder="Name.."><br>
                 <input type="text" name="lastName" class="input-add" placeholder="Last name.."><br>
+                <input type="text" name="email" class="input-add" placeholder="Email.."><br>
+                <input type="number" name="age" class="input-add" placeholder="Age.."><br>
+                <input type="text" name="position" class="input-add" placeholder="Position.."><br>
+                <input type="date" name="starterDate" class="input-add"><br>
 
-                <select type="select" name="select" id="select-sg"> 
-                    <option value="">Select</option>
+                <div class="select">
+                <select type="select" name="select" id="select-sg" placeholder=""> 
+                    <option >Select</option>
                     <option value="manager">Manager</option>
                     <option value="employee">Employee</option>
-                </select><br>
+                </select>
+                <i></i>
+                </div><br>
                     
                 <input type="submit" value="Create" class="input-add">
             </form>
