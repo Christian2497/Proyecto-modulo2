@@ -30,8 +30,10 @@
       <div class="card-body">
         <h5 class="card-title text-white">{{this.name}}</h5>
         <p class="card-title text-black">{{this.description}}</p>
-        <a href="/audit/edit" class="p-add">Edit</a>
-        <a href="/audit/{{this._id}}" class="p-add">Delete</a>
+        <a href="/audit/edit?dept_id={{this._id}}" class="p-add">Edit</a>
+        <form action="/audit/{{this._id}}/delete" method="post">
+            <button type="submit" class="delete">DELETE</button>
+        </form>
         <a href="/audit/{{this._id}}" class="btn btn-secondary btn-sm ">See workers & Audit</a>
       </div>
     </div>

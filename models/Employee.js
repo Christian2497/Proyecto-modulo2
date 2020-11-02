@@ -7,8 +7,11 @@ const employeeSchema = new Schema(
     lastName: String,
     email: String,
     password: String,
-    img: { type: String, default: '...' },
-    department: [{ type: Schema.Types.ObjectId, ref: 'Department' }],
+    starterDate: Date,
+    position: String,
+    age: Number,
+    comments: [],
+    img: { type: String, default: '/images/perfil2.jpeg' },
     rate: [{
       teamUp: Number,
       communication: Number,

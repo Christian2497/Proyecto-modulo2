@@ -1,0 +1,18 @@
+<h1>{{employee.name}} {{employee.lastName}}</h1>
+
+<form action="/audit/auditory/{{employee._id}}/edit?employee_id={{employee._id}}" method="post" >
+  <label for="">Email:</label>
+  <input type="text" name="email" value="{{employee.email}}"/>
+
+  <label for="">Age:</label>
+  <input type="text" name="age" value="{{employee.age}}"/>
+
+  <label for="">Position:</label>
+  <input type="text" name="position" value="{{employee.position}}"/>
+
+  <label for="">Photo:</label>
+  <input type="file" name="img" value="{{employee.img}}"/>
+
+  <button type="submit">EDIT</button>
+</form>
+

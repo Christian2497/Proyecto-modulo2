@@ -52,7 +52,7 @@
 .p-add{
     color:black;
 }
-.input-add[type=text], .input-add[type=password]{
+.input-add[type=text], .input-add[type=password], .input-add[type=number], .input-add[type=date]{
     width: 100%;
     box-sizing: border-box;
     padding: 12px 5px;
@@ -118,6 +118,14 @@
 .btn-edit-dept{
     background-color: grey;
     border: none;
+}
+.delete{
+    border: none;
+    background-color: #AD9175;
+}
+.delete:hover{
+   text-decoration: underline;
+   color: red;
 }
 .btn-secondary {
     color: black;
@@ -255,6 +263,7 @@
         width: 70%;
         flex-direction: column;
         justify-content: center;
+       
     }
 }
 
