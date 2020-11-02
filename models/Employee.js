@@ -9,7 +9,7 @@ const employeeSchema = new Schema(
     password: String,
     starterDate: Date,
     position: String,
-    age: Number,
+    phone: Number,
     comments: [],
     img: { type: String, default: '/images/perfil2.jpeg' },
     rate: [{

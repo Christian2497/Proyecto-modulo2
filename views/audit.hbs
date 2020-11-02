@@ -12,7 +12,7 @@
     <div class="container-add">
       <div class="info-add">
         <h2 class="h2-add">NEW DEPARTMENT</h2>
-        <p class="p-add">En esta seccion podras añadir departamentos y dejar una breve descripcion a cada una.</p>
+        <p class="text-add">En esta seccion podras añadir departamentos y dejar una breve descripcion a cada una.</p>
       </div>
       <form action="/audit" method="post">
           <input type="text" name="name" class="input-add" placeholder="Name.." ><br>
@@ -28,12 +28,14 @@
     {{#each dept}}
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title text-white">{{this.name}}</h5>
-        <p class="card-title text-black">{{this.description}}</p>
-        <a href="/audit/edit?dept_id={{this._id}}" class="p-add">Edit</a>
-        <form action="/audit/{{this._id}}/delete" method="post">
-            <button type="submit" class="delete">DELETE</button>
-        </form>
+        <h5 class="card-title">{{this.name}}</h5>
+        <p class="card-title-p">{{this.description}}</p>
+        <div class="card-btn">
+          <a href="/audit/edit?dept_id={{this._id}}" class="p-add-edit">Edit |</a>
+          <form action="/audit/{{this._id}}/delete" method="post">
+              <button type="submit" class="delete">Delete</button>
+          </form>
+        </div>
         <a href="/audit/{{this._id}}" class="btn btn-secondary btn-sm ">See workers & Audit</a>
       </div>
     </div>

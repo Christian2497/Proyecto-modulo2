@@ -83,7 +83,7 @@ router.get('/audit',withAuth, async(req, res, next)=>{
 
     router.post("/audit/:id", async (req, res, next) => {
     const {select} = req.body;
-    const {name, lastName, starterDate, age, position, email} = req.body;
+    const {name, lastName, starterDate, phone, position, email} = req.body;
     
     if(select == "manager"){
     try{
@@ -91,7 +91,7 @@ router.get('/audit',withAuth, async(req, res, next)=>{
               name: name,
               lastName: lastName,
               email: email,
-              age: age,
+              phone: phone,
               position: position,
               starterDate: starterDate,
       }) 
@@ -109,7 +109,7 @@ router.get('/audit',withAuth, async(req, res, next)=>{
               name: name,
               lastName: lastName,
               email: email,
-              age: age,
+              phone: phone,
               position: position,
               starterDate: starterDate,
         }) 

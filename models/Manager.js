@@ -9,7 +9,7 @@ const managerSchema = new Schema(
     password: String,
     starterDate: Date,
     position: String,
-    age: Number,
+    phone: Number,
     img: { type: String, default: '/images/perfil2.jpeg' },
   },
   {
