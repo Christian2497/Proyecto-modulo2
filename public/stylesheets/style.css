@@ -170,6 +170,7 @@ footer{
   transform:  rotate(45deg) translate(-5px,-5px);
 }
 
+
 @media screen and (max-width:1024px){
   .nav-links{
       width: 60%;

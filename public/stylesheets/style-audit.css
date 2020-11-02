@@ -1,18 +1,95 @@
 .body-audit{
-    background: url(/images/audit.jpg)no-repeat center center;
+    background-color: #A2A0A0;
+}
+.photo-audit{
+    background: url(/images/office.jpg)no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 135vh;
+    height: 35vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .title-audit{
-    display: flex;
-    justify-content: center;
-    padding: 20px;
+    color: rgba(255,255,255,1);
 }
 
+.main-audit{
+   display: flex;
+   flex-direction: column;
+}
+
+
+/*--------ADD DEPT---------- */
+.container-main-add{
+    display: flex;
+    justify-content: center;
+}
+.container-main-add-details{
+    display: flex;
+    justify-content: center;
+}
+.container-add{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 30px;
+    text-align: center;
+    background-color: #474343 ;
+    border: 1px solid #fff;
+    padding: 10px;
+}
+.info-add{
+    border-bottom: 1px solid #fff;
+    margin-bottom: 10px;
+}
+.h2-add{
+    color: #fff;
+}
+.p-add{
+    color:black;
+}
+.input-add[type=text], .input-add[type=password]{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 5px;
+    background: rgba(0,0,0,0.10);
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #fff;
+    margin-top: 5px;
+    font-weight: bold;
+    color: #fff;
+}
+.input-add[type=submit]{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 0;
+    margin-top: 30px;
+    outline: none;
+    border: none;
+    background: #B5B1B1 ;
+    opacity: 0.7;
+    border-radius: 20px;
+    font-size: 20px;
+    color: #040404;
+  }
+
+  .input-add[type=submit]:hover{
+    background: white;
+    opacity: 0.7;
+  }
+  
+/*--------CARDS DEPT---------- */
+
+.container-main-cards{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
 .container-cards{
     display: flex;
     justify-content: space-around;
@@ -20,12 +97,17 @@
     flex-wrap: wrap;
     margin: 10px;
 }
+.card{
+    width: 48%;
+    margin-bottom: 10px;
+}
 .card-body{
-    background-color: #545656 ;
+    background-color: #545656;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px;
+    overflow: hidden;
 }
 
 .card-title {
@@ -38,7 +120,150 @@
     border: none;
 }
 
-.container-add{
-    background-color: yellow;
+.oculto{
+    display: none;
 }
 
+/*--------DEPT DETAILS---------- */
+
+.body-details{
+    background-color: #A2A0A0;
+}
+.photo-details{
+    background: url(/images/audit.jpg)no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 35vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-main-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+.container-info{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.container-manager{
+    display: flex;
+    background-color: #545656;
+    flex-direction: column;
+    list-style: none;
+    align-items: center;
+    padding: 10px;
+    width: 81%;
+    border: 1px solid #fff;
+    margin: 10px;
+}
+.container-employee{
+    display: flex;
+    background-color: #545656;
+    flex-direction: column;
+    list-style: none;
+    align-items: center;
+    padding: 10px;
+    width: 81%;
+    border: 1px solid #fff;
+    margin: 10px;
+}
+
+
+
+@media screen and (min-width: 500px) {
+    .photo-audit{
+        background: url(/images/office.jpg)no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        height: 55vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .photo-details{
+        background: url(/images/audit.jpg)no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        height: 55vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .main-audit{
+        display: flex;
+        flex-direction: row;
+     }
+    .container-main-add{
+        display: flex;
+        justify-content: center;
+        width: 40%;
+    }
+   
+    .container-main-cards{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+    }
+    .container-cards{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 27px;
+    }
+   
+    .oculto{
+        background-color: teal;
+        padding: 10%;
+        display: flex;
+    }
+    .container-main-details{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+        padding: 35px 0px;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .photo-audit{
+        background: url(/images/office.jpg)no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        height: 75vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .photo-details{
+        background: url(/images/audit.jpg)no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        height: 75vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

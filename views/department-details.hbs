@@ -1,38 +1,60 @@
-<h1>{{dept.name}}</h1>
+<div class="body-details">
 
-<h2>add manager or employee</h2>
-<form action="/audit/{{dept._id}}" method="post">
-
-    <label>Name</label>
-    <input type="text" name="name" >
-
-    <label>Last name</label>
-    <input type="text" name="lastName" >
-
-{{!--     <label>Department</label>
-    <input type="text" name="departmentId" > --}}
-  <label for="select-sg"> Select </label>
-        <select type="select" name="select" id="select-sg" placeholder=""> 
-            <option value="manager">Manager</option>
-            <option value="employee">Employee</option>
-        </select>
-
-    <input type="submit" value="Create">
-</form>
-
-<div>
-    <div>
-      <h4>{{dept.description}}</h4>
+    <div class="photo-details">
+    <div class="title-audit">
+        <h1 class="h1-audit">{{dept.name}}</h1>
     </div>
-    <div>
-    <h2> Managers: </h2>
-    {{#each dept.manager}}
-    <li>{{this.name}}</li>
-    {{/each}}
-    <h2> Employees: </h2>
-    {{#each dept.employee}}
-    <li><a href="/audit/auditory/{{this.id}}">{{this.name}}</a></li>
-    {{/each}}
     </div>
-    {{!-- <p>There are no dept</p> --}}
+
+<div class="main-audit">
+    <div class="container-main-add-details">
+        <div class="container-add">
+        <div class="info-add">
+            <h2 class="h2-add">NEW WORKER</h2>
+            <p class="p-add">En esta seccion podras añadir nuevos managers y empleados.</p>
+        </div>
+            <form action="/audit/{{dept._id}}" method="post">
+                <input type="text" name="name" class="input-add" placeholder="Name.."><br>
+                <input type="text" name="lastName" class="input-add" placeholder="Last name.."><br>
+
+                <select type="select" name="select" id="select-sg"> 
+                    <option value="">Select</option>
+                    <option value="manager">Manager</option>
+                    <option value="employee">Employee</option>
+                </select><br>
+                    
+                <input type="submit" value="Create" class="input-add">
+            </form>
+        </div>
+    </div>  
+
+    <div class="container-main-details">
+
+        <div class="container-info">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-white">{{dept.name}}</h5>
+                    <p class="card-title text-black">{{dept.description}}</p>
+                 </div>
+            </div>
+        </div>
+
+            <div class="container-manager">
+                <h2 class="h2-add">Managers</h2>
+                {{#each dept.manager}}
+                <li>{{this.name}} {{this.lastName}}</li>
+                {{/each}}
+            </div>
+
+            <div class="container-employee">
+                <h2 class="h2-add">Employees</h2>
+                <p class="p-add">Select one employee to audit</p>
+                {{#each dept.employee}}
+                <li><a href="/audit/auditory/{{this.id}}">{{this.name}} {{this.lastName}}</a></li>
+                {{/each}}  
+            </div>
+      
+        </div>
+    </div>
+    
 </div>

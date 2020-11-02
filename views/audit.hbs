@@ -1,37 +1,47 @@
 <div class="body-audit">
 
+<div class="photo-audit">
   <div class="title-audit">
-    <h1>DEPARTMENTS</h1>
-  </div>
-
-
-<div class="container-cards">
-{{#each dept}}
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title text-white">{{this.name}}</h5>
-    <p class="card-title text-black">{{this.description}}</p>
-    <a href="/audit/{{this._id}}" class="btn btn-secondary btn-sm">See workers & Audit</a>
-    <a href="/audit/edit" >Edit</a>
-    <a href="/audit/{{this._id}}" >Delete</a>
+    <h1 class="h1-audit"></h1>
   </div>
 </div>
-{{/each}}
-</div>
 
-  <div class="container-add">
-    <h2>Add dept</h2>
-    <form action="/audit" method="post">
+<div class="main-audit">
 
-        <label>Name</label>
-        <input type="text" name="name" >
+<div class="container-main-add">
+    <div class="container-add">
+      <div class="info-add">
+        <h2 class="h2-add">NEW DEPARTMENT</h2>
+        <p class="p-add">En esta seccion podras añadir departamentos y dejar una breve descripcion a cada una.</p>
+      </div>
+      <form action="/audit" method="post">
+          <input type="text" name="name" class="input-add" placeholder="Name.." ><br>
+          <input type="text" name="description" class="input-add" placeholder="Description.."></input><br>
 
-        <label>Description</label>
-        <input type="text" name="description" >
-
-        <input type="submit" value="Create">
-    </form>
+          <input type="submit" value="Create" class="input-add">
+      </form>
+    </div>
   </div>
 
+  <div class="container-main-cards">
+    <div class="container-cards">
+    {{#each dept}}
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-white">{{this.name}}</h5>
+        <p class="card-title text-black">{{this.description}}</p>
+        <a href="/audit/edit" class="p-add">Edit</a>
+        <a href="/audit/{{this._id}}" class="p-add">Delete</a>
+        <a href="/audit/{{this._id}}" class="btn btn-secondary btn-sm ">See workers & Audit</a>
+      </div>
+    </div>
+    {{/each}}
+    </div>
+  </div>
+</div>
+
+<div class="oculto">
+  <p>Soy oculto hasta los 700px</p>
+</div>
 
 </div>
