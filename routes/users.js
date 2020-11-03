@@ -25,9 +25,7 @@ const hashPass = bcrypt.hashSync(password, salt);
 const user = await Employee.findOne({ email: email });
   // si existiera en la base de datos, renderizamos la vista de auth/signup con un mensaje de error
   if (user !== null) {
-    res.render("users/signup", {
-      errorMessage: "The email already exists!",
-    });
+    res.render("users/signup", {errorMessage: "The email already exists!"});
     return;
   }
 

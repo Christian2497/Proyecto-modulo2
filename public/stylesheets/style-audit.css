@@ -59,7 +59,7 @@
 .text-add{
     color: #D9D9D9;
 }
-.input-add[type=text], .input-add[type=password], .input-add[type=number], .input-add[type=date]{
+.input-add[type=text], .input-add[type=password], .input-add[type=number], .input-add[type=date], .input-add[type=email]{
     width: 100%;
     box-sizing: border-box;
     padding: 12px 5px;

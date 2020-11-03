@@ -19,6 +19,13 @@ router.get('/audit',withAuth, async(req, res, next)=>{
 
   router.post("/audit", async (req, res, next) => {
     const {name, description} = req.body;
+    // if (req.body.name === "") {
+    //   res.render("audit" , {
+    //     errorMessage: "Introduce a department name",
+    //   });
+    //   return;
+    // }
+
     try{
         await Department.create({
             name: name,
@@ -82,9 +89,17 @@ router.get('/audit',withAuth, async(req, res, next)=>{
     });
 
     router.post("/audit/:id", async (req, res, next) => {
-    const {name, lastName, starterDate, phone, position, email} = req.body;
-
       try{
+        const {name, lastName, starterDate, phone, position, email} = req.body;
+        const user = await Employee.findOne({ email: email });
+
+        if (user !== null) {
+          res.render("audit/", {
+            errorMessage: "The email already exists!",
+          });
+          return;
+        }
+
         const newEmployee = await Employee.create({
               name: name,
               lastName: lastName,
