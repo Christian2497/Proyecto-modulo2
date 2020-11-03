@@ -10,48 +10,23 @@
     <div class="container-main-add-details">
         <div class="container-add">
         <div class="info-add">
-            <h2 class="h2-add">NEW WORKER</h2>
+            <h2 class="h2-add">NEW EMPLOYEE</h2>
             <p class="text-add">En esta seccion podras añadir nuevos managers y empleados.</p>
         </div>
             <form action="/audit/{{dept._id}}" method="post">
                 <input type="text" name="name" class="input-add" placeholder="Name.."><br>
                 <input type="text" name="lastName" class="input-add" placeholder="Last name.."><br>
                 <input type="text" name="email" class="input-add" placeholder="Email.."><br>
-                <input type="number" name="phone" class="input-add" placeholder="Phone.."><br>
+                <input type="text" name="phone" class="input-add" placeholder="Phone.."><br>
                 <input type="text" name="position" class="input-add" placeholder="Position.."><br>
                 <input type="date" name="starterDate" class="input-add"><br>
 
-                <div class="select">
-                <select type="select" name="select" id="select-sg"> 
-                    <option>Select</option>
-                    <option value="manager">Manager</option>
-                    <option value="employee">Employee</option>
-                </select>
-                <i></i>
-                </div><br>
-                    
                 <input type="submit" value="Create" class="input-add">
             </form>
         </div>
     </div>  
 
     <div class="container-main-details">
-
-        <div class="container-info">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">{{dept.name}}</h5>
-                    <p class="card-title-p">{{dept.description}}</p>
-                 </div>
-            </div>
-        </div>
-
-            <div class="container-manager">
-                <h2 class="h2-worker">Managers</h2>
-                {{#each dept.manager}}
-                <li>{{this.name}} {{this.lastName}}</li>
-                {{/each}}
-            </div>
 
             <div class="container-employee">
                 <h2 class="h2-worker">Employees</h2>

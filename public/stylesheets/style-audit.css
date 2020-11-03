@@ -143,6 +143,9 @@
     color: #353535;
     margin-right: 1px;
 }
+.p-add-edit:hover{
+    color: black;
+}
 .delete{
     border: none;
     background-color: #D9D9D9;

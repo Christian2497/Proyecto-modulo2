@@ -11,12 +11,14 @@ const employeeSchema = new Schema(
     position: String,
     phone: Number,
     comments: [],
-    img: { type: String, default: '/images/perfil2.jpeg' },
+    imgPath: { type: String, default: '/images/perfil2.jpeg' },
+    department: [{ type: Schema.Types.ObjectId, ref: 'Department' }],
     rate: [{
-      teamUp: Number,
+      teamManagement: Number,
       communication: Number,
       puntuality: Number,
       project: Number,
+      performance: Number,
     }],
   },
   {

@@ -7,7 +7,6 @@ const companySchema = new Schema(
     email: String,
     password: String,
     img: { type: String, default: '/images/perfil2.jpeg' },
-    department: [{ type: Schema.Types.ObjectId, ref: 'Department' }]
   },
   {
     timestamps: true
