@@ -14,7 +14,6 @@
                 <select type="select" name="select" id="select-sg" placeholder=""> 
                     <option value=""></option>
                     <option value="company">Company</option>
-                    <option value="manager">Manager</option>
                     <option value="employee">Employee</option>
                 </select>
                 <i></i>
@@ -24,12 +23,14 @@
             {{#if errorMessage}}
             {{errorMessage}}
             {{/if}}
-            <p>
-            Don't have an account?
-            <a href="/signup">
-                Create an account.
-            </a>
-            </p>
+            <div class="accountMessage">
+                <p>
+                Don't have an account?
+                <a href="/signup"><br>
+                    Create it one!
+                </a>
+                </p>
+            </div>
     </div>
     </div>
 </div>

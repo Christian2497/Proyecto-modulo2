@@ -1,9 +1,9 @@
 
 <div>
     <h3>Ficha</h3>
-    <img src="{{employee.img}}">
+    <img src="{{employee.imgPath}}">
     <p>{{employee.name}} {{employee.lastName}}</p>
-    <p>{{employee.age}} years old</p>
+    <p>{{employee.phone}}</p>
     <p>{{employee.email}}</p>
     <p>{{employee.position}}</p>
     <p>{{employee.starterDate}}</p>
@@ -17,12 +17,12 @@
 <div>
     <h4>Audit</h4>
 <form action="/audit/auditory/{{employee._id}}" method="POST">
-<label for="teamUp"> Team up </label><br>
-<input type="radio" name="teamUp" value="1"> 1 
-<input type="radio" name="teamUp" value="2"> 2
-<input type="radio" name="teamUp" value="3"> 3
-<input type="radio" name="teamUp" value="4"> 4
-<input type="radio" name="teamUp" value="5"> 5
+<label for="#"> Team Management </label><br>
+<input type="radio" name="teamManagement" value="1"> 1 
+<input type="radio" name="teamManagement" value="2"> 2
+<input type="radio" name="teamManagement" value="3"> 3
+<input type="radio" name="teamManagement" value="4"> 4
+<input type="radio" name="teamManagement" value="5"> 5
 
 <br>
 <label for="#"> Comunication </label> <br>
@@ -46,10 +46,18 @@
 <input type="radio" name="project" value="2"> 2
 <input type="radio" name="project" value="3"> 3
 <input type="radio" name="project" value="4"> 4
-<input type="radio" name="project" value="5"> 5 <br>
+<input type="radio" name="project" value="5"> 5 
 
-{{!-- <label for="#"> Comments </label><br>
-<textarea type="text" name="comments" ></textarea><br> --}}
+<br>
+<label for="#"> Performance </label><br>
+<input type="radio" name="performance" value="1"> 1 
+<input type="radio" name="performance" value="2"> 2
+<input type="radio" name="performance" value="3"> 3
+<input type="radio" name="performance" value="4"> 4
+<input type="radio" name="performance" value="5"> 5 <br>
+
+<label for="#"> Comments </label><br>
+<input type="text" name="comments" placeholder="Comments.."><br>
 
 <input type="submit" name="submit" value="Submit">
 </form>
@@ -57,16 +65,19 @@
 </div>
 <div>
     <p>
-        Team up: {{employee.rate.[0].teamUp}}
+        Team Management: {{employee.rate.[0].teamManagement}}
         Communication: {{employee.rate.[0].communication}}
         Puntuality: {{employee.rate.[0].puntuality}}
         Project execution: {{employee.rate.[0].project}}
+        Performance: {{employee.rate.[0].performance}}
     </p>
     <p>Average rate of last audit: {{avgRate}}</p>
 
-      <p>Average rate of total audit: </p>
+      <p>Average rate of total audit: {{totalRate}}</p>
 </div>
 
 <form action="/audit/auditory/{{employee._id}}/delete" method="post">
     <button type="submit" class="delete">DELETE</button>
 </form>
+
+<a href="/audit/{{employee.department}}">Return</a> 

@@ -1,11 +1,12 @@
 var express = require('express');
-var router = express.Router();
 const Employee = require("../models/Employee");
-const Manager = require("../models/Manager");
 const Company = require("../models/Company");
 const Department = require("../models/Department");
 const withAuth = require("../helpers/middleware");
 
+const uploadCloud = require('../config/cloudinary.js');
+
+var router = express.Router();
 // Show Department  //
 router.get('/audit',withAuth, async(req, res, next)=>{
     try {
@@ -64,13 +65,12 @@ router.get('/audit',withAuth, async(req, res, next)=>{
       });
     });
 
-// Show Department Details and create new workers  //
-
+// Show employees and create new employees  //
   router.get("/audit/:id", async (req, res, next) =>{
       try{
          const deptFound = await Department.findById(req.params.id)
-          .populate('manager')
           .populate('employee')
+
           if(deptFound){
               res.render('department-details', { dept: deptFound });
           }
@@ -82,36 +82,17 @@ router.get('/audit',withAuth, async(req, res, next)=>{
     });
 
     router.post("/audit/:id", async (req, res, next) => {
-    const {select} = req.body;
-    const {name, lastName, starterDate, age, position, email} = req.body;
-    
-    if(select == "manager"){
-    try{
-      const newManager = await Manager.create({
-              name: name,
-              lastName: lastName,
-              email: email,
-              age: age,
-              position: position,
-              starterDate: starterDate,
-      }) 
-      
-      const addManager = await Department.findByIdAndUpdate(req.params.id, {$push: {manager: newManager._id}});
-      res.redirect("/audit/" + req.params.id);
-    } catch (error) {
-      next(error);
-    }
-  }
-  
-    if(select == "employee"){
+    const {name, lastName, starterDate, phone, position, email} = req.body;
+
       try{
         const newEmployee = await Employee.create({
               name: name,
               lastName: lastName,
               email: email,
-              age: age,
+              phone: phone,
               position: position,
               starterDate: starterDate,
+              department: req.params.id
         }) 
         const addEmployee = await Department.findByIdAndUpdate(req.params.id, {$push: {employee: newEmployee._id}});
         res.redirect("/audit/" + req.params.id);
@@ -119,7 +100,6 @@ router.get('/audit',withAuth, async(req, res, next)=>{
       } catch (error) {
         next(error);
       }
-      } 
   });
 
 // Show Details employees  //
@@ -136,31 +116,48 @@ router.get('/audit',withAuth, async(req, res, next)=>{
       }return 0;
     });
 
-    if(employeeFound.rate.length >0){
-      let averageRate = (employeeFound.rate[0].teamUp + employeeFound.rate[0].communication + employeeFound.rate[0].puntuality + employeeFound.rate[0].project)/4
-      res.render('valorate-user', { employee: employeeFound , avgRate: averageRate});
+    
+    if(employeeFound.rate.length > 0){
+      let arrayVacia = [];
+
+    const rateTeamManagement = employeeFound.rate.map(data=>{
+      arrayVacia.push(data.teamManagement)
+      arrayVacia.push(data.communication)
+      arrayVacia.push(data.puntuality)
+      arrayVacia.push(data.project)
+      arrayVacia.push(data.performance)
+    })
+    let totalRate = arrayVacia.reduce((acc, crr)=> acc + crr)
+
+      let averageRate = (employeeFound.rate[0].teamManagement + employeeFound.rate[0].communication + employeeFound.rate[0].puntuality + employeeFound.rate[0].project + employeeFound.rate[0].performance)/5
+      
+      res.render('valorate-user', { employee: employeeFound , avgRate: averageRate, totalRate:Math.round(totalRate/arrayVacia.length)});
     }
     if(employeeFound){
-        res.render('valorate-user', { employee: employeeFound});
+        res.render('valorate-user', { employee: employeeFound} );
     }
-        }catch(error) {
-          next(error);
-        }
+    }catch(error) {
+      next(error);
+    }
+
+
+    
   });
 
   router.post("/audit/auditory/:id", async (req, res, next) => {
     try{
     let newRate = {
-      teamUp: req.body.teamUp,
+      teamManagement: req.body.teamManagement,
       communication: req.body.communication,
       puntuality: req.body.puntuality,
-      project: req.body.project
+      project: req.body.project,
+      performance: req.body.performance
     }
     let comment = {
       comments: req.body.comments
     }
     let{id} = req.params;
-      const addRate = await Employee.findByIdAndUpdate(id, {$push: {rate: newRate}}, {$push: {comments: comment}});
+      const addRate = await Employee.findByIdAndUpdate(id, {$push: {rate: newRate, comments: comment}});
 
       res.redirect("/audit/auditory/" + req.params.id)
   }catch(error){
@@ -181,9 +178,17 @@ router.get('/audit',withAuth, async(req, res, next)=>{
   });
 
  
-  router.post("/audit/auditory/:id/edit", (req, res, next) => {
-    const { email, age, position, img } = req.body;
-    Employee.updateOne({ _id: req.query.employee_id }, { $set: { email, age, position, img } }, { new: true })
+  router.post("/audit/auditory/:id/edit", uploadCloud.single("img"),(req, res, next) => {
+    const { email, phone, position , previousImg} = req.body;
+    console.log(req.file,'knbjbbcjbjd' , req.body)
+
+    if(!req.file || req.file === '' || req.file === undefined){
+       imgPath = previousImg
+    }else{
+       imgPath = req.file.url 
+    }
+
+    Employee.updateOne({ _id: req.query.employee_id }, { $set: { email, phone, position, imgPath} }, { new: true })
     .then((employee)=>{
       res.redirect("/audit/auditory/" + req.params.id);
     })
@@ -192,19 +197,15 @@ router.get('/audit',withAuth, async(req, res, next)=>{
     });
   });
 
-
     // Delete Employee  //
     router.post("/audit/auditory/:id/delete", (req, res, next) => {
     Employee.findByIdAndRemove({_id: req.params.id})
     .then((employee)=>{
-      res.redirect("/audit");
+      res.redirect("/audit/" + employee.department);
     })
     .catch((error) =>{
       console.log(error);
     });
   });
-  
 
-
- 
 module.exports = router;

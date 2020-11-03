@@ -1,9 +1,30 @@
-<form action="/audit/edit?dept_id={{dept._id}}" method="post">
-  <label for="">Name:</label>
-  <input type="text" name="name" value="{{dept.name}}"/>
+<div class="body-details">
 
-  <label for="">Description:</label>
-  <input type="text" name="description"  value="{{dept.description}}"/>
+    <div class="photo-details">
+    <div class="title-audit">
+        <h1 class="h1-audit">{{dept.name}}</h1>
+    </div>
+    </div>
 
-  <button type="submit">EDIT</button>
-</form>
+<div class="main-audit">
+    <div class="container-main-add-details">
+        <div class="container-edit">
+          <div class="info-add">
+            <p class="text-add">Edit information</p>
+          </div>
+          <form action="/audit/edit?dept_id={{dept._id}}" method="post">
+      
+          <input type="text" name="name" class="input-add" value="{{dept.name}}"><br>
+          <input type="text" name="description" class="input-add" value="{{dept.description}}"><br>
+
+          <input type="submit" class="input-add" value="EDIT">
+
+          </form>
+        </div>
+    </div>  
+    </div>
+    <a href="/audit">Return</a> 
+</div>
+
+
+
