@@ -92,13 +92,14 @@ router.get('/audit',withAuth, async(req, res, next)=>{
       try{
         const {name, lastName, starterDate, phone, position, email} = req.body;
         const user = await Employee.findOne({ email: email });
-
-        if (user !== null) {
-          res.render("audit/", {
-            errorMessage: "The email already exists!",
-          });
-          return;
-        }
+        
+        //funciona pero nos dirige a una pagina vacia
+        // if (user !== null) {
+        //   res.render("audit", {
+        //     errorMessage: "The email already exists!",
+        //   });
+        //   return;
+        // }
 
         const newEmployee = await Employee.create({
               name: name,
