@@ -12,11 +12,13 @@ router.get('/news', withAuth, async (req, res, next) => {
   try {
     const news = await New.find();
     const events = await Event.find();
-    res.render("news", { news, events });
+    
+    res.render("news", {news, events });
   } catch (error) {
     console.log(error);
   }
 });
+
 
 router.post('/news', withAuth, uploadCloud.single("img"),  async (req, res, next) => {
 
@@ -51,7 +53,7 @@ router.post('/news', withAuth, uploadCloud.single("img"),  async (req, res, next
   next(error);
 }
 });
-
+// editar noticias
 router.get("/news/edit", withAuth,(req, res, next) => {
   New.findOne({ _id: req.query.news_id})
   .then((news) => {
@@ -79,6 +81,34 @@ router.post("/news/edit",withAuth, uploadCloud.single("img"),(req, res, next) =>
   });
 });
 
+// Editar eventos
+router.get("/news/events/edit", withAuth,(req, res, next) => {
+  Event.findOne({ _id: req.query.events_id})
+  .then((events) => {
+    res.render('event-edit', {events});
+  })
+  .catch((err) =>{
+    console.log(err)
+  })
+});
+
+router.post("/news/events/edit",withAuth, uploadCloud.single("img"),(req, res, next) => {
+  const { title, description, place, date, time ,previousImg} = req.body;
+
+  if(!req.file || req.file === '' || req.file === undefined){
+     imgPathEvent = previousImg
+  }else{
+     imgPathEvent = req.file.url 
+  }
+
+  Event.updateOne({ _id: req.query.events_id }, { $set: { title, description, place, date, time , imgPathEvent} }, { new: true })
+  .then((events)=>{
+    res.redirect("/news");
+  })
+  .catch((error) =>{
+    console.log(error);
+  });
+});
 
 
    // Delete New  //
@@ -91,6 +121,17 @@ router.post("/news/edit",withAuth, uploadCloud.single("img"),(req, res, next) =>
       console.log(error);
     });
   });
+
+     // Delete event  //
+     router.post("/news/events/:id/delete",withAuth, (req, res, next) => {
+      Event.findByIdAndRemove({_id: req.params.id})
+      .then((events)=>{
+        res.redirect("/news");
+      })
+      .catch((error) =>{
+        console.log(error);
+      });
+    });
 
 
 module.exports = router;
