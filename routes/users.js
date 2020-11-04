@@ -54,7 +54,7 @@ const user = await Employee.findOne({ email: email });
 
   if(select == "company"){
     try {
-    const { name, email, password} = req.body;
+    const { name, email, password, passwordRepeat} = req.body;
     const salt = bcrypt.genSaltSync(10);
     const hashPass = bcrypt.hashSync(password, salt);
     const user = await Company.findOne({ email: email });

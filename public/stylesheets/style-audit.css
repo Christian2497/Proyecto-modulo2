@@ -265,7 +265,17 @@
 }
 
 /* --------- valorate ---------- */
-
+.container-form-rates{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.container-card-rates{
+    display: flex;
+    justify-content: center;
+    width: 200%;
+}
 .body-valorate{
  background-color: #F0EFEF;
 }
@@ -273,12 +283,10 @@
 .container-card-valorate{
     display: flex;  
     justify-content: center;
-    border-bottom: 2px solid red;
+   
     padding-top: 20px;
 }
-.container-form-rates{
-    background-color: royalblue;
-}
+
 .card-body-valorate{
     background-color: #D9D9D9;
     display: flex;
@@ -292,9 +300,6 @@
     height: 100%;
 }
 
-.label-rate{
-   
-}
 .container-rates{
     display: flex;
     flex-direction: column;
@@ -306,15 +311,56 @@
     padding: 10px;
     width: 80%;
 }
-.container-rates-form{
-    display: flex;
-    flex-direction: column;
+
+.info-add-rate{
+    border-bottom: 2px solid #fff;
+    margin-top: 22px;
+    margin-bottom: 27px;
+    padding-bottom: 10px;
+}
+.label-field{
+    color: #fff;
+}
+.radio{
+    display: inline-flex;
     align-items: center;
-    background-color: yellow;
+    cursor: pointer;
+    margin-right: 10px;
+    color: #D9D9D9;
+}
+.radio__input{
+    display: none;
+}
+.radio__radio{
+    width: 1.25em;
+    height: 1.25em;
+    border: 2px solid #D9D9D9;
+    border-radius: 50%;
+    margin-right: 10px;
+    box-sizing: border-box;
+    padding: 2px;
+}
+.radio__radio::after{
+content: "";
+width: 100%;
+height: 100%;
+display: block;
+background: #009879;
+border-radius: 50%;
+
+transform: scale(0);
+transition: trasnform 0.15s;
 }
 
-
-
+.radio__input:checked + .radio__radio::after{
+transform: scale(1);
+}
+.hr-form{
+    background-color: #D9D9D9;
+}
+.card-text-rates{
+    color: #353535;
+}
 
 @media screen and (min-width: 500px) {
     .photo-audit{
@@ -376,6 +422,20 @@
     }
     .img-edit{
         width: 100%;
+    }
+    .container-form-rates{
+        
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .container-card-rates{
+        display: flex;
+        justify-content: center;
+        width: 50%;
+        margin: auto;
+
     }
 }
 
