@@ -5,8 +5,9 @@
         <h2 class="h2-lg">Sign up</h2>
         <form action="/signup" method="post">
             <input type="text" name="name" class="input-sg" placeholder="Name.." required>
-            <input type="text" name="email" class="input-sg" placeholder="Email.." required>
+            <input type="email" name="email" class="input-sg" placeholder="Email.." required>
             <input type="password" name="password" class="input-sg" placeholder="Password.." required>
+            <input type="password" name="passwordRepeat" class="input-sg" placeholder="Repeat Password.." required>
 
             <div class="texto">
             <label for="select"> Status </label>
@@ -21,9 +22,11 @@
             </div>
             <input type="submit" value="Submit" class="input-sg">
         </form>
+        <div class="errorMessage">
             {{#if errorMessage}}
             {{errorMessage}}
             {{/if}}
+        </div>
     </div>
     </div>
 </div>

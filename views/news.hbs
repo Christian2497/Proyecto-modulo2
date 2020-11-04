@@ -1,1 +1,45 @@
-<h1>news</h1>
+<div class="body-new">
+    <h1>news</h1>
+
+    <form action="/news" method="POST" enctype="multipart/form-data">
+        <input type="text" name="title" placeholder="Title..">
+        <textarea type="text" name="description" placeholder="Description.."></textarea>
+        <input type="file" name="img" required/>
+        <button type="submit">Create new</button>
+    </form>
+
+    <form action="/news/event" method="POST" enctype="multipart/form-data">
+        <input type="text" name="titleEvent" placeholder="Title..">
+        <input type="text" name="place" placeholder="Place..">
+        <input type="date" name="date">
+        <textarea type="text" name="descriptionEvent" placeholder="Description.."></textarea>
+        <input type="file" name="imgEvent" required/>
+        <button type="submit">Create new</button>
+    </form>
+
+{{#each news}}
+    <img src="{{this.imgPath}}">
+    <p>{{this.title}}</p>
+    <p>{{this.description}}</p>
+    <a href="/news/edit?news_id={{this._id}}" >Edit</a>
+    <form action="/news/{{this._id}}/delete" method="POST">
+        <button type="submit" >Delete</button>
+    </form>
+{{/each}}
+
+{{#each events}}
+    <img src="{{this.imgPathEvent}}">
+    <p>{{this.titleEvent}}</p>
+    <p>{{this.descriptionEvent}}</p>
+    <p>{{this.place}}</p>
+    <p>{{this.date}}</p>
+    {{!-- <a href="/news/edit?news_id={{this._id}}" >Edit</a>
+    <form action="/news/{{this._id}}/delete" method="POST">
+        <button type="submit" >Delete</button>
+    </form> --}}
+{{/each}}
+
+
+
+</div>
+
