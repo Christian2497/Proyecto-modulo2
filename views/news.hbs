@@ -4,16 +4,21 @@
     <form action="/news" method="POST" enctype="multipart/form-data">
         <input type="text" name="title" placeholder="Title..">
         <textarea type="text" name="description" placeholder="Description.."></textarea>
-        <input type="file" name="img" required/>
+        <input type="file" name="img" />
+        <input type="hidden" name="forms" value="news"/>
+
         <button type="submit">Create new</button>
     </form>
 
-    <form action="/news/event" method="POST" enctype="multipart/form-data">
+    <form action="/news" method="POST" enctype="multipart/form-data">
         <input type="text" name="titleEvent" placeholder="Title..">
         <input type="text" name="place" placeholder="Place..">
         <input type="date" name="date">
+        <input type="time" name="time" placeholder="Hour..">
         <textarea type="text" name="descriptionEvent" placeholder="Description.."></textarea>
-        <input type="file" name="imgEvent" required/>
+        <input type="file" name="img"/>
+        <input type="hidden" name="forms" value="events"/>
+
         <button type="submit">Create new</button>
     </form>
 
@@ -33,6 +38,7 @@
     <p>{{this.descriptionEvent}}</p>
     <p>{{this.place}}</p>
     <p>{{this.date}}</p>
+    <p>{{this.time}}</p>
     {{!-- <a href="/news/edit?news_id={{this._id}}" >Edit</a>
     <form action="/news/{{this._id}}/delete" method="POST">
         <button type="submit" >Delete</button>

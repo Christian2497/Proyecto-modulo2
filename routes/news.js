@@ -11,23 +11,42 @@ const uploadCloud = require('../config/cloudinary.js');
 router.get('/news', withAuth, async (req, res, next) => {
   try {
     const news = await New.find();
-    res.render("news", { news });
+    const events = await Event.find();
+    res.render("news", { news, events });
   } catch (error) {
     console.log(error);
   }
 });
 
 router.post('/news', withAuth, uploadCloud.single("img"),  async (req, res, next) => {
-  const {title , description} = req.body
-  const imgPath = req.file.url 
 
   try{
-    await New.create({
+    if(req.body.forms === "news"){
+      const {title , description} = req.body
+      const imgPath = req.file.url 
+      await New.create({
         title: title,
         description: description,
         imgPath: imgPath,
     })
-    res.redirect("news");
+    res.redirect("/news");
+    }
+
+    if(req.body.forms === "events"){
+      const {titleEvent , place, date, time, descriptionEvent} = req.body
+      const imgPathEvent = req.file.url 
+      
+      await Event.create({
+            titleEvent: titleEvent,
+            place: place,
+            date: date,
+            time: time,
+            descriptionEvent: descriptionEvent,
+            imgPathEvent: imgPathEvent,
+        })
+        res.redirect("/news");
+    }
+     
 } catch (error) {
   next(error);
 }
@@ -59,34 +78,6 @@ router.post("/news/edit",withAuth, uploadCloud.single("img"),(req, res, next) =>
     console.log(error);
   });
 });
-
-router.get('/news/event', withAuth, async (req, res, next) => {
-  try {
-    const events = await Event.find();
-    res.render("news", {events});
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-router.post('/news/event', withAuth, uploadCloud.single("imgEvent"),  async (req, res, next) => {
-  const {titleEvent , place, date, descriptionEvent} = req.body
-  const imgPathEvent = req.file.url 
-
-  try{
-    await Event.create({
-        titleEvent: titleEvent,
-        place: place,
-        date: date,
-        descriptionEvent: descriptionEvent,
-        imgPathEvent: imgPathEvent,
-    })
-    res.redirect("news");
-} catch (error) {
-  next(error);
-}
-});
-
 
 
 

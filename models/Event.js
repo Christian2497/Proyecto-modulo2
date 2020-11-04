@@ -7,6 +7,7 @@ const eventSchema = new Schema(
     descriptionEvent: String,
     imgPathEvent: String,
     date: Date,
+    time: String,
     place: String,
   },
   {

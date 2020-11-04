@@ -22,6 +22,9 @@
                 <input type="date" name="starterDate" class="input-add"><br>
 
                 <input type="submit" value="Create" class="input-add">
+        {{#if errorMessage}}
+      {{errorMessage}}
+      {{/if}}
             </form>
         </div>
     </div>  

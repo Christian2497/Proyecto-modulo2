@@ -92,15 +92,13 @@ router.get('/audit',withAuth, async(req, res, next)=>{
       try{
         const {name, lastName, starterDate, phone, position, email} = req.body;
         const user = await Employee.findOne({ email: email });
-        
-        //funciona pero nos dirige a una pagina vacia
-        // if (user !== null) {
-        //   res.render("audit", {
-        //     errorMessage: "The email already exists!",
-        //   });
-        //   return;
-        // }
-
+       
+        if (user !== null) {
+          const deptFound = await Department.findById(req.params.id)
+          .populate('employee')
+          res.render(`department-details`, {dept: deptFound, errorMessage: "The email already exists!"});
+        }
+      
         const newEmployee = await Employee.create({
               name: name,
               lastName: lastName,
@@ -131,7 +129,8 @@ router.get('/audit',withAuth, async(req, res, next)=>{
         return -1;
       }return 0;
     });
-
+    var date = new Date(employeeFound.starterDate);
+    const formatDate = date.toLocaleDateString('es-ES');
     
     if(employeeFound.rate.length > 0){
       let arrayVacia = [];
@@ -146,18 +145,15 @@ router.get('/audit',withAuth, async(req, res, next)=>{
     let totalRate = arrayVacia.reduce((acc, crr)=> acc + crr)
 
       let averageRate = (employeeFound.rate[0].teamManagement + employeeFound.rate[0].communication + employeeFound.rate[0].puntuality + employeeFound.rate[0].project + employeeFound.rate[0].performance)/5
-      
-      res.render('valorate-user', { employee: employeeFound , avgRate: averageRate, totalRate:Math.round(totalRate/arrayVacia.length)});
+
+      res.render('valorate-user', {formatDate, employee: employeeFound , avgRate: averageRate, totalRate:Math.round(totalRate/arrayVacia.length)});
     }
     if(employeeFound){
-        res.render('valorate-user', { employee: employeeFound} );
+        res.render('valorate-user', { formatDate, employee: employeeFound} );
     }
     }catch(error) {
       next(error);
     }
-
-
-    
   });
 
   router.post("/audit/auditory/:id", withAuth,async (req, res, next) => {
