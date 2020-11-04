@@ -17,7 +17,7 @@ router.get('/audit',withAuth, async(req, res, next)=>{
       }
   });
 
-  router.post("/audit", async (req, res, next) => {
+  router.post("/audit",withAuth, async (req, res, next) => {
     const {name, description} = req.body;
     // if (req.body.name === "") {
     //   res.render("audit" , {
@@ -39,7 +39,7 @@ router.get('/audit',withAuth, async(req, res, next)=>{
 
 
 // Edit Department  //
-  router.get("/audit/edit", (req, res, next) => {
+  router.get("/audit/edit", withAuth,(req, res, next) => {
     Department.findOne({ _id: req.query.dept_id})
     .then((dept) => {
       res.render('dept-edit', {dept});
@@ -49,7 +49,7 @@ router.get('/audit',withAuth, async(req, res, next)=>{
     })
   });
 
-  router.post("/audit/edit", (req, res, next) => {
+  router.post("/audit/edit", withAuth,(req, res, next) => {
     const { name, description} = req.body;
     Department.updateOne({ _id: req.query.dept_id }, { $set: { name, description } }, { new: true })
     .then((dept)=>{
@@ -62,7 +62,7 @@ router.get('/audit',withAuth, async(req, res, next)=>{
 
 
     // Delete Department  //
-    router.post("/audit/:id/delete", (req, res, next) => {
+    router.post("/audit/:id/delete", withAuth,(req, res, next) => {
       Department.findByIdAndRemove({_id: req.params.id})
       .then((department)=>{
         res.redirect('/audit');
@@ -73,7 +73,7 @@ router.get('/audit',withAuth, async(req, res, next)=>{
     });
 
 // Show employees and create new employees  //
-  router.get("/audit/:id", async (req, res, next) =>{
+  router.get("/audit/:id", withAuth,async (req, res, next) =>{
       try{
          const deptFound = await Department.findById(req.params.id)
           .populate('employee')
@@ -88,19 +88,17 @@ router.get('/audit',withAuth, async(req, res, next)=>{
       }
     });
 
-    router.post("/audit/:id", async (req, res, next) => {
+    router.post("/audit/:id",withAuth, async (req, res, next) => {
       try{
         const {name, lastName, starterDate, phone, position, email} = req.body;
         const user = await Employee.findOne({ email: email });
-        
-        //funciona pero nos dirige a una pagina vacia
-        // if (user !== null) {
-        //   res.render("audit", {
-        //     errorMessage: "The email already exists!",
-        //   });
-        //   return;
-        // }
-
+       
+        if (user !== null) {
+          const deptFound = await Department.findById(req.params.id)
+          .populate('employee')
+          res.render(`department-details`, {dept: deptFound, errorMessage: "The email already exists!"});
+        }
+      
         const newEmployee = await Employee.create({
               name: name,
               lastName: lastName,
@@ -119,7 +117,7 @@ router.get('/audit',withAuth, async(req, res, next)=>{
   });
 
 // Show Details employees  //
-  router.get("/audit/auditory/:id", async (req, res, next) => {
+  router.get("/audit/auditory/:id", withAuth,async (req, res, next) => {
     try{
     const employeeFound = await Employee.findById(req.params.id)
 
@@ -131,7 +129,8 @@ router.get('/audit',withAuth, async(req, res, next)=>{
         return -1;
       }return 0;
     });
-
+    var date = new Date(employeeFound.starterDate);
+    const formatDate = date.toLocaleDateString('es-ES');
     
     if(employeeFound.rate.length > 0){
       let arrayVacia = [];
@@ -146,21 +145,18 @@ router.get('/audit',withAuth, async(req, res, next)=>{
     let totalRate = arrayVacia.reduce((acc, crr)=> acc + crr)
 
       let averageRate = (employeeFound.rate[0].teamManagement + employeeFound.rate[0].communication + employeeFound.rate[0].puntuality + employeeFound.rate[0].project + employeeFound.rate[0].performance)/5
-      
-      res.render('valorate-user', { employee: employeeFound , avgRate: averageRate, totalRate:Math.round(totalRate/arrayVacia.length)});
+
+      res.render('valorate-user', {formatDate, employee: employeeFound , avgRate: averageRate, totalRate:Math.round(totalRate/arrayVacia.length)});
     }
     if(employeeFound){
-        res.render('valorate-user', { employee: employeeFound} );
+        res.render('valorate-user', { formatDate, employee: employeeFound} );
     }
     }catch(error) {
       next(error);
     }
-
-
-    
   });
 
-  router.post("/audit/auditory/:id", async (req, res, next) => {
+  router.post("/audit/auditory/:id", withAuth,async (req, res, next) => {
     try{
     let newRate = {
       teamManagement: req.body.teamManagement,
@@ -183,7 +179,7 @@ router.get('/audit',withAuth, async(req, res, next)=>{
  
 
   // Edit info employees   //
-  router.get("/audit/auditory/:id/edit", (req, res, next) => {
+  router.get("/audit/auditory/:id/edit",withAuth, (req, res, next) => {
     Employee.findOne({ _id: req.query.employee_id})
     .then((employee) => {
       res.render('employee-edit', {employee});
@@ -194,10 +190,9 @@ router.get('/audit',withAuth, async(req, res, next)=>{
   });
 
  
-  router.post("/audit/auditory/:id/edit", uploadCloud.single("img"),(req, res, next) => {
+  router.post("/audit/auditory/:id/edit",withAuth, uploadCloud.single("img"),(req, res, next) => {
     const { email, phone, position , previousImg} = req.body;
-    console.log(req.file,'knbjbbcjbjd' , req.body)
-
+  
     if(!req.file || req.file === '' || req.file === undefined){
        imgPath = previousImg
     }else{
@@ -214,7 +209,7 @@ router.get('/audit',withAuth, async(req, res, next)=>{
   });
 
     // Delete Employee  //
-    router.post("/audit/auditory/:id/delete", (req, res, next) => {
+    router.post("/audit/auditory/:id/delete",withAuth, (req, res, next) => {
     Employee.findByIdAndRemove({_id: req.params.id})
     .then((employee)=>{
       res.redirect("/audit/" + employee.department);

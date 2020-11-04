@@ -1,0 +1,10 @@
+<form action="/news/edit?news_id={{news._id}}" method="post" enctype="multipart/form-data">
+
+<input type="text" name="title" value="{{news.title}}"><br>
+<input type="text" name="description" value="{{news.description}}"><br>
+<input type="file" name="img"/>
+<input type="hidden" name="previousImg" value="{{news.imgPath}}"/>
+
+<input type="submit" class="" value="EDIT">
+
+</form>

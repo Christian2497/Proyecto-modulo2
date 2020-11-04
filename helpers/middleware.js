@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const secret = process.env.SECRET_SESSION;
 // const Company = require("../models/Company");
-// const Employee = require("../models/Employee");
+const Employee = require("../models/Employee");
 // const Manager = require("../models/Manager");
 
 

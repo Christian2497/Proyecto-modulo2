@@ -13,7 +13,11 @@
         "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo 
         Aldus PageMaker, el cual incluye versiones de Lorem Ipsum. </p></b>
         <div class="boton">
+            {{#if isUserLoggedIn}}
            <a href="/audit"><button>  Go Dept </button> </a>
+           {{else}}
+           <a href="/signup"><button>  Go Dept </button> </a>
+           {{/if}}
         </div>
     </div>
     

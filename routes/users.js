@@ -19,15 +19,26 @@ const {select} = req.body;
 
 if(select == "employee"){
 try {
-const { name, lastName, email, password} = req.body;
+const { name, lastName, email, password, passwordRepeat} = req.body;
 const salt = bcrypt.genSaltSync(10);
 const hashPass = bcrypt.hashSync(password, salt);
 const user = await Employee.findOne({ email: email });
-  // si existiera en la base de datos, renderizamos la vista de auth/signup con un mensaje de error
+ 
   if (user !== null) {
     res.render("users/signup", {errorMessage: "The email already exists!"});
     return;
   }
+  
+  if (req.body.password.length < 6) {
+    res.render("users/signup", {errorMessage: "The Password must contain 6 or more characters."});
+  return;
+  }
+
+  if (password !== passwordRepeat) {
+    res.render("users/signup", {errorMessage: "The Password doesn't match."});
+    return;
+  }
+
 
   await Employee.create({
     name: name,
@@ -35,7 +46,7 @@ const user = await Employee.findOne({ email: email });
     email: email,
     password: hashPass,
   });
-  res.redirect("/");
+  res.redirect("/login");
 } catch (error) {
   next(error);
 }
@@ -49,9 +60,17 @@ const user = await Employee.findOne({ email: email });
     const user = await Company.findOne({ email: email });
       // si existiera en la base de datos, renderizamos la vista de auth/signup con un mensaje de error
       if (user !== null) {
-        res.render("users/signup", {
-          errorMessage: "The email already exists!",
-        });
+        res.render("users/signup", {errorMessage: "The email already exists!"});
+        return;
+      }
+      
+      if (req.body.password.length < 6) {
+        res.render("users/signup", {errorMessage: "The Password must contain 6 or more characters."});
+      return;
+      }
+    
+      if (password !== passwordRepeat) {
+        res.render("users/signup", {errorMessage: "The Password doesn't match."});
         return;
       }
     
@@ -73,6 +92,9 @@ const user = await Employee.findOne({ email: email });
     return;
     }
 });
+
+
+
 
 router.get('/login', function(req, res, next) {
   res.render('users/login', {errorMessage: ''});
@@ -107,7 +129,7 @@ router.post("/login", async (req, res, next) => {
       const payload = { userWithoutPass };
       // creamos el token usando el método sign, el string de secret session y el expiring time
       const token = jwt.sign(payload, process.env.SECRET_SESSION, {
-        expiresIn: "1h"
+        expiresIn: "24h"
       });
       // enviamos en la respuesta una cookie con el token y luego redirigimos a la home
       res.cookie("token", token, { httpOnly: true });
