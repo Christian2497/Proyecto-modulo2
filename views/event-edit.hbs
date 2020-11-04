@@ -1,0 +1,13 @@
+<form action="/news/events/edit?events_id={{events._id}}" method="post" enctype="multipart/form-data">
+
+<input type="text" name="titleEvent" value="{{events.titleEvent}}"><br>
+<input type="text" name="descriptionEvent" value="{{events.descriptionEvent}}"><br>
+<input type="text" name="place" value="{{events.place}}"><br>
+<input type="time" name="time" value="{{events.time}}"><br>
+<input type="date" name="date" value="{{events.date}}"><br>
+<input type="file" name="img"/>
+<input type="hidden" name="previousImg" value="{{events.imgPath}}"/>
+
+<input type="submit" class="" value="EDIT">
+
+</form>

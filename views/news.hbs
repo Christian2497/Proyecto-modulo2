@@ -37,12 +37,12 @@
     <p>{{this.titleEvent}}</p>
     <p>{{this.descriptionEvent}}</p>
     <p>{{this.place}}</p>
-    <p>{{this.date}}</p>
+    <p>{{timeDate}}</p>
     <p>{{this.time}}</p>
-    {{!-- <a href="/news/edit?news_id={{this._id}}" >Edit</a>
-    <form action="/news/{{this._id}}/delete" method="POST">
+    <a href="/news/events/edit?events_id={{this._id}}" >Edit</a>
+    <form action="/news/events/{{this._id}}/delete" method="POST">
         <button type="submit" >Delete</button>
-    </form> --}}
+    </form>
 {{/each}}
 
 
