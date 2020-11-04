@@ -1,20 +1,92 @@
+<div class="body-valorate">
 
-<div>
-    <h3>Ficha</h3>
-    <img src="{{employee.imgPath}}">
-    <p>{{employee.name}} {{employee.lastName}}</p>
-    <p>{{employee.phone}}</p>
-    <p>{{employee.email}}</p>
-    <p>{{employee.position}}</p>
-    <p>{{formatDate}}</p>
-    <a href="/audit/auditory/{{employee._id}}/edit?employee_id={{employee._id}}" class="p-add">Edit</a>
+<div class="container-card-valorate">
+    <div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+        <img src="{{employee.imgPath}}" class="card-img" alt="perfil">
+        </div>
+        <div class="col-md-8">
+        <div class="card-body-valorate">
+            <h5 class="card-title">{{employee.name}} {{employee.lastName}}</h5>
+            <p class="card-text">{{employee.email}}</p>
+            <p class="card-text">{{employee.phone}}</p>
+            <p class="card-text">{{employee.position}}</p>
+            <p class="card-text">{{formatDate}}</p>
+            <a href="/audit/auditory/{{employee._id}}/edit?employee_id={{employee._id}}" class="p-add">Edit</a>
+        </div>
+        </div>
+    </div>
+    </div>
 </div>
-<hr>
+
+<div class="container-form-rates">
+
+    <div class="container-main-add">
+    <div class="container-rates">
+      <div class="info-add">
+        <h2 class="h2-add">AUDIT</h2>
+        <p class="text-add">RATE AND COMMENTS</p>
+      </div>
+
+      <div class="container-rates-form">
+        <form action="/audit/auditory/{{employee._id}}" method="POST">
+            <label class="label-rate"> Team Management </label><br>
+            <input type="radio" name="teamManagement" class="input-add" value="1"> 1 
+            <input type="radio" name="teamManagement" class="input-add"value="2"> 2
+            <input type="radio" name="teamManagement" class="input-add" value="3"> 3
+            <input type="radio" name="teamManagement" class="input-add"  value="4"> 4
+            <input type="radio" name="teamManagement" class="input-add" value="5"> 5
+            <hr>
+            
+            <label for="#"> Comunication </label> <br>
+            <input type="radio" name="communication" class="input-add" value="1"> 1 
+            <input type="radio" name="communication" class="input-add" value="2"> 2
+            <input type="radio" name="communication" class="input-add" value="3"> 3
+            <input type="radio" name="communication" class="input-add" value="4"> 4
+            <input type="radio" name="communication" class="input-add" value="5"> 5
+            <hr>
+            
+            <label for="#"> Puntuality </label> <br>
+            <input type="radio" name="puntuality" class="input-add" value="1"> 1 
+            <input type="radio" name="puntuality" class="input-add" value="2"> 2
+            <input type="radio" name="puntuality" class="input-add" value="3"> 3
+            <input type="radio" name="puntuality" class="input-add" value="4"> 4
+            <input type="radio" name="puntuality" class="input-add" value="5"> 5
+            <hr>
+
+            <label for="#"> Project execution </label><br>
+            <input type="radio" name="project" class="input-add" value="1"> 1 
+            <input type="radio" name="project" class="input-add" value="2"> 2
+            <input type="radio" name="project" class="input-add" value="3"> 3
+            <input type="radio" name="project" class="input-add" value="4"> 4
+            <input type="radio" name="project" class="input-add" value="5"> 5 
+            <hr>
+        
+            <label for="#"> Performance </label><br>
+            <input type="radio" name="performance" class="input-add" value="1"> 1 
+            <input type="radio" name="performance" class="input-add" value="2"> 2
+            <input type="radio" name="performance" class="input-add" value="3"> 3
+            <input type="radio" name="performance" class="input-add" value="4"> 4
+            <input type="radio" name="performance" class="input-add" value="5"> 5 
+            <hr>    
+            
+
+            <label for="#"> Comments </label><br>
+            <input type="text" name="comments" placeholder="Comments.."><br>
+
+            <input type="submit" name="submit" value="Submit" class="input-add">
+        </form>
+        </div>
+    </div>
+  </div>
+
+</div>
 
 
 
 
-<div>
+
     <h4>Audit</h4>
 <form action="/audit/auditory/{{employee._id}}" method="POST">
 <label for="#"> Team Management </label><br>
@@ -62,7 +134,7 @@
 <input type="submit" name="submit" value="Submit">
 </form>
 
-</div>
+
 <div>
     <p>
         Team Management: {{employee.rate.[0].teamManagement}}
@@ -81,3 +153,5 @@
 </form>
 
 <a href="/audit/{{employee.department}}">Return</a> 
+
+</div>
