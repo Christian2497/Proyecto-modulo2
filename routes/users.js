@@ -39,7 +39,6 @@ const user = await Employee.findOne({ email: email });
     return;
   }
 
-
   await Employee.create({
     name: name,
     lastName: lastName,
@@ -159,7 +158,7 @@ if(select == "employee"){
     } else if (bcrypt.compareSync(password, user.password)) {
       // generamos el token
       const userWithoutPass = await Employee.findOne({ email }).select("-password");
-      const payload = { userWithoutPass };
+      const payload = { userWithoutPass , isEmployee: true};
       // creamos el token usando el método sign, el string de secret session y el expiring time
       const token = jwt.sign(payload, process.env.SECRET_SESSION, {
         expiresIn: "1h"

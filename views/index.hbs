@@ -35,7 +35,12 @@
         <b><p>Te ayudará a llevar un control del rendimiento de los empleados dentro de cada departamento.</p></b>
         <div class="boton">
             {{#if isUserLoggedIn}}
+            {{#unless isEmployee}}
            <a href="/audit"><button>  Go Audit </button> </a>
+           {{/unless}}
+           {{#if isEmployee}}
+           <a href="/profile"><button>  Go Profile </button> </a>
+           {{/if}}
            {{else}}
            <a href="/signup"><button>  Go Audit </button> </a>
            {{/if}}

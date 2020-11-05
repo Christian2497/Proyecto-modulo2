@@ -9,6 +9,9 @@ const Event = require("../models/Event");
 const uploadCloud = require('../config/cloudinary.js');
 
 router.get('/news', withAuth, async (req, res, next) => {
+  if(!res.locals.isUserLoggedIn){
+    res.redirect('/signup')
+  }
   try {
     const news = await New.find();
     const events = await Event.find();

@@ -24,3 +24,8 @@ const navSlide = () => {
     var pdrs = document.getElementById('file-upload').files[0].name;
     document.getElementById('info').innerHTML = pdrs;
 }
+
+function cambiar2(){
+    var pdrs = document.getElementById('file-upload-events').files[0].name;
+    document.getElementById('info').innerHTML = pdrs;
+}

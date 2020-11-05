@@ -20,9 +20,6 @@
             </div>
             <input type="submit" class="input-sg" value="Submit">
         </form>
-            {{#if errorMessage}}
-            {{errorMessage}}
-            {{/if}}
             <div class="accountMessage">
                 <p>
                 Don't have an account?
@@ -31,6 +28,11 @@
                 </a>
                 </p>
             </div>
+                <div class="errorMessage">
+            {{#if errorMessage}}
+            {{errorMessage}}
+            {{/if}}
+        </div>
     </div>
     </div>
 </div>

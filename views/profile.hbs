@@ -1,0 +1,48 @@
+<div class="body-valorate">
+
+<div class="container-perfil-valorate">
+    
+<div class="card" style="width: 18rem;">
+  <img src="{{employee.imgPath}}"class="card-img-top" alt="perfil">
+  <div class="card-body-img">
+   <h5 class="card-title">{{employee.name}} {{employee.lastName}}</h5>
+   <p class="card-text">{{employee.position}}</p>
+  </div>
+</div>
+  
+<div class="card-rate" style="width: 18rem; height: 21.3em;">
+<div class="card-body-valorate">
+        <h5 class="card-title">Profile</h5>
+        <p class="card-text">{{employee.email}}</p>
+        <p class="card-text">{{employee.phone}}</p>
+        <p class="card-text">Initial contract: {{formatDate}}</p>
+        <p class="card-text">Average rate: {{totalRate}}</p>    
+</div>
+<div class="card-body-valorate">
+    <a href="/audit/auditory/{{employee._id}}/edit?employee_id={{employee._id}}" class="card-link">Edit information</a>
+</div>
+
+</div>
+
+</div>
+
+
+    <div class="container-main-valorate">
+            
+            <div class="container-employee">
+                <h2 class="h2-worker">LAST RATE</h2>
+                <p class="card-text-rates">Team Management: {{employee.rate.[0].teamManagement}}</p>
+                <p class="card-text-rates">Communication: {{employee.rate.[0].communication}}</p>
+                <p class="card-text-rates">Puntuality: {{employee.rate.[0].puntuality}}</p>
+                <p class="card-text-rates">Project execution: {{employee.rate.[0].project}}</p>
+                <p class="card-text-rates">Performance: {{employee.rate.[0].performance}}</p>
+                <p class="card-text-rates-avg"><strong>Average: {{avgRate}}</strong></p>
+                <h5 class="h2-worker">LAST COMMENT</h5>
+                <p class="card-text-rates">{{employee.comments.[0].comment}}</p>
+            </div>
+            {{!-- <div class="container-img-valorate">
+                <img src="/images/valorate.jpeg" class="img-detail-valorate">
+            </div> --}}
+
+    </div>
+</div>  

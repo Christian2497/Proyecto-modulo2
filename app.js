@@ -17,6 +17,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var auditRouter = require('./routes/audit');
 var newsRouter = require('./routes/news');
+var profileRouter = require('./routes/profile');
 var app = express();
 
 require("./config/configDB");
@@ -35,6 +36,7 @@ app.use('/', indexRouter);
 app.use('/', usersRouter);
 app.use('/', auditRouter);
 app.use('/', newsRouter);
+app.use('/', profileRouter);
 
 /* app.use(session({
     secret: process.env.SECRET_SESSION,

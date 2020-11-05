@@ -5,6 +5,7 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+
 /* -------------- NAV ---------------*/
 nav{
   display: flex;
@@ -282,6 +283,18 @@ nav{
  text-align: center;
 }
 
+.errorMessage{
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  text-align: center;
+}
+.col-md-8{
+  background-color: #D9D9D9;
+}
+
+
 /* -------------- FOOTER ---------------*/
 footer{
   /*position: fixed;*/
@@ -293,13 +306,13 @@ footer{
 .bottom center{
   padding: 5px;
   font-size: 20px;
-  background-color: #D9D9D9;
+  background-color: #353535;
 }
 .bottom center span{
-  color: #fff;
+  color: #D9D9D9;
 }
 .bottom center span a{
-  color: #120202;
+  color: #fff;
   text-decoration: none;
 }
 

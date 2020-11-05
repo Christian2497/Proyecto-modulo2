@@ -1,13 +1,60 @@
-<form action="/news/events/edit?events_id={{events._id}}" method="post" enctype="multipart/form-data">
 
-<input type="text" name="titleEvent" value="{{events.titleEvent}}"><br>
-<input type="text" name="descriptionEvent" value="{{events.descriptionEvent}}"><br>
-<input type="text" name="place" value="{{events.place}}"><br>
-<input type="time" name="time" value="{{events.time}}"><br>
-<input type="date" name="date" value="{{events.date}}"><br>
-<input type="file" name="img"/>
-<input type="hidden" name="previousImg" value="{{events.imgPath}}"/>
+<div class="body-details">
 
-<input type="submit" class="" value="EDIT">
+    <div class="photo-new-event">
+    <div class="title-audit">
+        <h1 class="h1-audit">{{dept.name}}</h1>
+    </div>
+    </div>
 
-</form>
+<div class="main-audit">
+    <div class="container-main-edit-details">
+        <div class="container-edit">
+          <div class="info-add">
+            <h3 class="text-add">Edit information</h3>
+          </div>
+            <form action="/news/events/edit?events_id={{events._id}}" method="post" enctype="multipart/form-data">
+      
+            <input type="text" name="titleEvent" class="input-add" value="{{events.titleEvent}}"><br>
+            <input type="text" name="descriptionEvent" class="input-add" value="{{events.descriptionEvent}}"><br>
+            <input type="text" name="place" class="input-add" value="{{events.place}}"><br>
+            <input type="time" name="time" class="input-add" value="{{events.time}}"><br>
+            <input type="date" name="date" class="input-add"  value="{{events.date}}"><br>
+
+            <label for="file-upload-event" class="subir">
+            <i class="fas fa-cloud-upload-alt"></i> Upload your photo
+            </label>
+            <input id="file-upload-event" onchange='cambiar()' type="file" name="img" style='display: none;'required/>
+            <input type="hidden" name="previousImg" value="{{events.imgPathEvent}}" required/>
+            <div id="info"></div>
+
+          <input type="submit" class="input-add" value="EDIT">
+
+          </form>
+
+        </div>
+    </div> 
+
+      <div class="container-img-edit">
+        <img class="img-edit" src="/images/workhard.jpeg">
+      </div>
+
+  </div>
+
+  <div class="return">
+      <button type="button" class="btn btn-secondary"><a class="a-return" href="/news"><i class="fas fa-arrow-circle-left"></i>Return</a></button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -19,11 +19,14 @@
         <p class="card-text">Average rate: {{totalRate}}</p>    
 </div>
 <div class="card-body-valorate">
-    <a href="/audit/auditory/{{employee._id}}/edit?employee_id={{employee._id}}" class="card-link">Edit information</a>
+    <div class="card-btn">
+          <a href="/audit/auditory/{{employee._id}}/edit?employee_id={{employee._id}}" class="p-add-edit"><i class="fas fa-edit"></i>Edit</a>|
+          <form action="/audit/auditory/{{employee._id}}/delete" method="post">
+              <button type="submit" class="delete">Delete<i class="fas fa-user-slash"></i></button>
+          </form>
+        </div>
 </div>
-  {{!-- <div class="card-footer">
-  
-  </div> --}}
+
 </div>
 
 </div>
@@ -199,38 +202,19 @@
                 <p class="card-text-rates">Project execution: {{employee.rate.[0].project}}</p>
                 <p class="card-text-rates">Performance: {{employee.rate.[0].performance}}</p>
                 <p class="card-text-rates-avg"><strong>Average: {{avgRate}}</strong></p>
+                <h5 class="h2-worker">LAST COMMENT</h5>
+                <p class="card-text-rates">{{employee.comments.[0].comment}}</p>
             </div>
             <div class="container-img-valorate">
                 <img src="/images/valorate.jpeg" class="img-detail-valorate">
             </div>
 
     </div>
-
-  {{!-- <div class="container-card-rates">
-    <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-    <div class="card-header">LAST RATE</div>
-    <div class="card-body">
-        <p class="card-text-rates">Team Management: {{employee.rate.[0].teamManagement}}</p>
-        <p class="card-text-rates">Communication: {{employee.rate.[0].communication}}</p>
-        <p class="card-text-rates">Puntuality: {{employee.rate.[0].puntuality}}</p>
-        <p class="card-text-rates">Project execution: {{employee.rate.[0].project}}</p>
-        <p class="card-text-rates">Performance: {{employee.rate.[0].performance}}</p>
-        <p class="card-text-rates-avg"><strong>Average: {{avgRate}}</strong></p>
-    </div>
-    </div>
-    <div class="container-img-valorate">
-        <img src="/images/valorate.jpeg" class="img-valorate">
-    </div>
-  </div> --}}
-
 </div>
 
+    <div class="return">
+         <button type="button" class="btn btn-secondary"><a class="a-return" href="/audit/{{employee.department}}"><i class="fas fa-arrow-circle-left"></i>Return</a></button>
+    </div>
 
-
-<form action="/audit/auditory/{{employee._id}}/delete" method="post">
-    <button type="submit" class="delete">DELETE</button>
-</form>
-
-<a href="/audit/{{employee.department}}">Return</a> 
 
 </div>
