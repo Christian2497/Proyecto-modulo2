@@ -9,6 +9,9 @@ const uploadCloud = require('../config/cloudinary.js');
 var router = express.Router();
 // Show Department  //
 router.get('/audit',withAuth, async(req, res, next)=>{
+  if(!res.locals.isUserLoggedIn){
+    res.redirect('/signup')
+  }
     try {
         const dept = await Department.find();
         res.render("audit", { dept });
@@ -19,12 +22,6 @@ router.get('/audit',withAuth, async(req, res, next)=>{
 
   router.post("/audit",withAuth, async (req, res, next) => {
     const {name, description} = req.body;
-    // if (req.body.name === "") {
-    //   res.render("audit" , {
-    //     errorMessage: "Introduce a department name",
-    //   });
-    //   return;
-    // }
 
     try{
         await Department.create({
@@ -118,9 +115,21 @@ router.get('/audit',withAuth, async(req, res, next)=>{
 
 // Show Details employees  //
   router.get("/audit/auditory/:id", withAuth,async (req, res, next) => {
+
     try{
     const employeeFound = await Employee.findById(req.params.id)
 
+
+    employeeFound.comments.sort((a,b) => {
+      if(a.date < b.date){
+        return 1;
+      }
+      if(a.date > b.date){
+        return -1;
+      }return 0;
+    });
+  
+    
     employeeFound.rate.sort((a,b) => {
       if(a._id < b._id){
         return 1;
@@ -129,6 +138,7 @@ router.get('/audit',withAuth, async(req, res, next)=>{
         return -1;
       }return 0;
     });
+
     var date = new Date(employeeFound.starterDate);
     const formatDate = date.toLocaleDateString('es-ES');
     
@@ -144,7 +154,9 @@ router.get('/audit',withAuth, async(req, res, next)=>{
     })
     let totalRate = arrayVacia.reduce((acc, crr)=> acc + crr)
 
-      let averageRate = (employeeFound.rate[0].teamManagement + employeeFound.rate[0].communication + employeeFound.rate[0].puntuality + employeeFound.rate[0].project + employeeFound.rate[0].performance)/5
+    let averageRate = (employeeFound.rate[0].teamManagement + employeeFound.rate[0].communication + employeeFound.rate[0].puntuality + employeeFound.rate[0].project + employeeFound.rate[0].performance)/5
+
+    let commentFound = employeeFound.comments[0].comment
 
       res.render('valorate-user', {formatDate, employee: employeeFound , avgRate: averageRate, totalRate:Math.round(totalRate/arrayVacia.length)});
     }
@@ -168,7 +180,8 @@ router.get('/audit',withAuth, async(req, res, next)=>{
       performance: req.body.performance
     }
     let comment = {
-      comments: req.body.comments
+      comment: req.body.comments,
+      date: new Date
     }
     let{id} = req.params;
       const addRate = await Employee.findByIdAndUpdate(id, {$push: {rate: newRate, comments: comment}});

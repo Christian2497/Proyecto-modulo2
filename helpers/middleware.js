@@ -20,10 +20,14 @@ const withAuth = async (req, res, next) => {
 
             // si el token valida, configuramos req.user con el valor del usuario decodificado
             req.user = decoded.userWithoutPass
+            if(decoded.isEmployee){
+                res.locals.isEmployee = true;
+            }
             console.log(req.user)
             // esto nos sirve para hacer validaciones en las plantillas de hbs
             res.locals.currentUserInfo = req.user
             res.locals.isUserLoggedIn = true;
+
             next()
         }
     } catch (error) {

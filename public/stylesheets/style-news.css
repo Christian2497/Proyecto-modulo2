@@ -1,6 +1,122 @@
 .body-new{
-    background-color: royalblue;
-    height: 100vh;
     width: 100%;
+    background-color: #F0EFEF;
+}
+.container-forms-news{
+    display: flex;
+    flex-direction: column;
+}
+
+.container-main-news{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.container-add-news{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 30px;
+    text-align: center;
+    background-color: #284B63;
+    border: 1px solid #fff;
+    padding: 10px;
+}
+.container-news-events{
+    display: flex;
+    flex-direction: column;
+}
+.card-new{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card-event{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card{
+    width: 100%;
+}
+
+.fas{
+    margin: 0px 10px;
+}
+
+.return{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.a-return{
+    color: #353535;
+}
+
+.btn{
+    padding-left: 0px;
+    background-color: #D9D9D9;
+}
+.btn a:hover{
+    color: #fff;
+    text-decoration: none;
+}
+
+.photo-new-edit{
+    background: url(/images/newEdit.jpeg)no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.photo-new-event{
+    background: url(/images/eventfoto.jpeg)no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media screen and (min-width: 600px) {
+    .container-forms-news{
+        display: flex;
+        flex-direction: row;
+    }
+}
+@media screen and (min-width: 768px) {
+    .container-news-events{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .card-new{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-right: 5px;
+    }
+    .card-event{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-right: 5px;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .container-news-events{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
 }
 

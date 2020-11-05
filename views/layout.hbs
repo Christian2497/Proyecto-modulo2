@@ -22,7 +22,13 @@
         <ul class="nav-links">
             <li><a href="/">Home</a></li>
             {{#if isUserLoggedIn}}
+            {{#unless isEmployee}}
             <li><a href="/audit">Audit</a></li>
+            {{/unless}}
+            {{#if isEmployee}}
+            <li><a href="/profile">Perfil</a></li>
+            {{/if}}
+            
             <li><a href="/news">News</a></li>
             {{else}}
             <li><a href="/signup">Audit</a></li>

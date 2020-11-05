@@ -1,10 +1,49 @@
-<form action="/news/edit?news_id={{news._id}}" method="post" enctype="multipart/form-data">
+<div class="body-details">
 
-<input type="text" name="title" value="{{news.title}}"><br>
-<input type="text" name="description" value="{{news.description}}"><br>
-<input type="file" name="img"/>
-<input type="hidden" name="previousImg" value="{{news.imgPath}}"/>
+    <div class="photo-new-edit">
+    <div class="title-audit">
+        <h1 class="h1-audit">{{dept.name}}</h1>
+    </div>
+    </div>
 
-<input type="submit" class="" value="EDIT">
+<div class="main-audit">
+    <div class="container-main-edit-details">
+        <div class="container-edit">
+          <div class="info-add">
+            <h3 class="text-add">Edit information</h3>
+          </div>
+          <form action="/news/edit?news_id={{news._id}}" method="post" enctype="multipart/form-data">
+      
+            <input type="text" name="title" class="input-add" value="{{news.title}}"><br>
+            <input type="text" name="description" class="input-add" value="{{news.description}}"><br>
 
-</form>
+            <label for="file-upload-event" class="subir">
+            <i class="fas fa-cloud-upload-alt"></i> Upload your photo
+            </label>
+            <input id="file-upload-event" onchange='cambiar()' type="file" name="img" style='display: none;'required/>
+            <input type="hidden" name="previousImg" value="{{news.imgPath}}" required/>
+            <div id="info"></div>
+
+          <input type="submit" class="input-add" value="EDIT">
+
+          </form>
+
+        </div>
+    </div> 
+
+      <div class="container-img-edit">
+        <img class="img-edit" src="/images/workhard.jpeg">
+      </div>
+
+  </div>
+
+  <div class="return">
+      <button type="button" class="btn btn-secondary"><a class="a-return" href="/news"><i class="fas fa-arrow-circle-left"></i>Return</a></button>
+  </div>
+</div>
+
+
+
+
+
+

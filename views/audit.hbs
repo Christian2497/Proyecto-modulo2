@@ -34,9 +34,9 @@
         <h5 class="card-title">{{this.name}}</h5>
         <p class="card-title-p">{{this.description}}</p>
         <div class="card-btn">
-          <a href="/audit/edit?dept_id={{this._id}}" class="p-add-edit">Edit </a>|
+          <a href="/audit/edit?dept_id={{this._id}}" class="p-add-edit"><i class="fas fa-edit"></i>Edit</a>|
           <form action="/audit/{{this._id}}/delete" method="post">
-              <button type="submit" class="delete">Delete</button>
+              <button type="submit" class="delete">Delete<i class="fas fa-trash-alt"></i></button>
           </form>
         </div>
         <a href="/audit/{{this._id}}" class="btn btn-secondary btn-sm ">See workers & Audit</a>
@@ -45,6 +45,7 @@
     {{/each}}
     </div>
   </div>
+  
 </div>
 
 <div class="oculto-audit">

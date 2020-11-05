@@ -10,7 +10,7 @@ const employeeSchema = new Schema(
     starterDate: Date,
     position: String,
     phone: Number,
-    comments: [],
+    comments: [{comment: String, date: Date}],
     imgPath: { type: String, default: '/images/perfil2.jpeg' },
     department: [{ type: Schema.Types.ObjectId, ref: 'Department' }],
     rate: [{

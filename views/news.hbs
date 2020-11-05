@@ -1,51 +1,114 @@
 <div class="body-new">
-    <h1>news</h1>
 
-    <form action="/news" method="POST" enctype="multipart/form-data">
-        <input type="text" name="title" placeholder="Title..">
-        <textarea type="text" name="description" placeholder="Description.."></textarea>
-        <input type="file" name="img" />
-        <input type="hidden" name="forms" value="news"/>
+<div class="container-forms-news">
+    
+        <div class="container-main-news">
+            <div class="container-add-news">
+            <div class="info-add">
+                <h2 class="h2-add">ADD NEW</h2>
+                <p class="text-add">En esta seccion podras añadir noticias e informacion relevante para los empleados.</p>
+            </div>
+            <form action="/news" method="POST" enctype="multipart/form-data">
+                <input type="text" name="title" class="input-add" placeholder="Title.." required>
+                <textarea type="text" name="description" class="input-add" rows="9" placeholder="Description.."></textarea>
+                
+                <label for="file-upload" class="subir">
+                <i class="fas fa-cloud-upload-alt"></i> Upload your photo
+                </label>
+                <input id="file-upload" onchange='cambiar()' type="file" name="img" style='display: none;' required/>
+                <input type="hidden" name="forms" value="news" required/>
+                <div id="info"></div>
 
-        <button type="submit">Create new</button>
-    </form>
+                <button type="submit" class="input-add">Create new</button>
+            </form>
+            </div>
+        </div>
 
-    <form action="/news" method="POST" enctype="multipart/form-data">
-        <input type="text" name="titleEvent" placeholder="Title..">
-        <input type="text" name="place" placeholder="Place..">
-        <input type="date" name="date">
-        <input type="time" name="time" placeholder="Hour..">
-        <textarea type="text" name="descriptionEvent" placeholder="Description.."></textarea>
-        <input type="file" name="img"/>
-        <input type="hidden" name="forms" value="events"/>
+        <div class="container-main-news">
+            <div class="container-add">
+            <div class="info-add">
+                <h2 class="h2-add">ADD EVENT</h2>
+                <p class="text-add">En esta seccion podras crear eventos tanto laborales como sociales.</p>
+            </div>
+            <form action="/news" method="POST" enctype="multipart/form-data">
+                <input type="text" name="titleEvent" class="input-add" placeholder="Title.." required>
+                <input type="text" name="place" class="input-add" placeholder="Place.."required>
+                <input type="date" name="date" class="input-add" required>
+                <input type="time" name="time" class="input-add" placeholder="Hour.."required>
+                <textarea type="text" name="descriptionEvent" class="input-add" placeholder="Description.."></textarea>
+                <label for="file-upload-event" class="subir">
+                <i class="fas fa-cloud-upload-alt"></i> Upload your photo
+                </label>
+                <input id="file-upload-event" onchange='cambiar()' type="file" name="img" style='display: none;'required/>
+                <input type="hidden" name="forms" value="events"required/>
+                <div id="info"></div>
 
-        <button type="submit">Create new</button>
-    </form>
+                <button type="submit" class="input-add">Create new</button>
+            </form>
+            </div>
+        </div>
 
-{{#each news}}
-    <img src="{{this.imgPath}}">
-    <p>{{this.title}}</p>
-    <p>{{this.description}}</p>
-    <a href="/news/edit?news_id={{this._id}}" >Edit</a>
-    <form action="/news/{{this._id}}/delete" method="POST">
-        <button type="submit" >Delete</button>
-    </form>
-{{/each}}
+    </div>
 
-{{#each events}}
-    <img src="{{this.imgPathEvent}}">
-    <p>{{this.titleEvent}}</p>
-    <p>{{this.descriptionEvent}}</p>
-    <p>{{this.place}}</p>
-    <p>{{timeDate}}</p>
-    <p>{{this.time}}</p>
-    <a href="/news/events/edit?events_id={{this._id}}" >Edit</a>
-    <form action="/news/events/{{this._id}}/delete" method="POST">
-        <button type="submit" >Delete</button>
-    </form>
-{{/each}}
+<div class="container-news-events">
 
+    <div class="card-new">
+    {{#each news}}
+    <div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+        <img src="{{this.imgPath}}" class="card-img" alt="new">
+        </div>
+        <div class="col-md-8">
+        <div class="card-body">
+            <h5 class="card-title">{{this.title}}</h5>
+            <p class="card-text">{{this.description}}</p>
+            <div class="card-btn">
+            <a href="/news/edit?news_id={{this._id}}" class="p-add-edit"><i class="fas fa-edit"></i>Edit</a>|
+            <form action="/news/{{this._id}}/delete" method="POST">
+            <button type="submit" class="delete">Delete<i class="fas fa-trash-alt"></i></button>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
+    </div>
+     {{/each}}
+    </div>
 
+    <div class="card-event">
+    {{#each events}}
+    <div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+        <img src="{{this.imgPathEvent}}" class="card-img" alt="event">
+        </div>
+        <div class="col-md-8">
+        <div class="card-body">
+            <h5 class="card-title">{{this.titleEvent}}</h5>
+            <p class="card-text">{{this.descriptionEvent}}</p>
+            <p class="card-text">{{this.place}}</p>
+            <p class="card-text">{{timeDate}}</p>
+            <p class="card-text">{{this.time}}</p>
+            <div class="card-btn">
+            <a href="/news/events/edit?events_id={{this._id}}" class="p-add-edit" ><i class="fas fa-edit"></i>Edit</a>|
+            <form action="/news/events/{{this._id}}/delete" method="POST">
+            <button type="submit" class="delete">Delete<i class="fas fa-trash-alt"></i></button>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
+    </div>
+     {{/each}}
+    </div>
 
 </div>
+
+    
+</div>
+
+
+
+
 
