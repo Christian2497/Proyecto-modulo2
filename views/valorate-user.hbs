@@ -1,33 +1,40 @@
 <div class="body-valorate">
 
-<div class="container-card-valorate">
-    <div class="card mb-3" style="max-width: 540px;">
-    <div class="row no-gutters">
-        <div class="col-md-4">
-        <img src="{{employee.imgPath}}" class="card-img" alt="perfil">
-        </div>
-        <div class="col-md-8">
-        <div class="card-body-valorate">
-            <h5 class="card-title">{{employee.name}} {{employee.lastName}}</h5>
-            <p class="card-text">{{employee.email}}</p>
-            <p class="card-text">{{employee.phone}}</p>
-            <p class="card-text">{{employee.position}}</p>
-            <p class="card-text">{{formatDate}}</p>
-            <p class="card-text">Average rates: {{totalRate}}</p>
-            <a href="/audit/auditory/{{employee._id}}/edit?employee_id={{employee._id}}" class="p-add">Edit</a>
-        </div>
-        </div>
-    </div>
-    </div>
+<div class="container-perfil-valorate">
+    
+<div class="card" style="width: 18rem;">
+  <img src="{{employee.imgPath}}"class="card-img-top" alt="perfil">
+  <div class="card-body-img">
+   <h5 class="card-title">{{employee.name}} {{employee.lastName}}</h5>
+   <p class="card-text">{{employee.position}}</p>
+  </div>
+</div>
+  
+<div class="card-rate" style="width: 18rem; height: 21.3em;">
+<div class="card-body-valorate">
+        <h5 class="card-title">Profile</h5>
+        <p class="card-text">{{employee.email}}</p>
+        <p class="card-text">{{employee.phone}}</p>
+        <p class="card-text">Initial contract: {{formatDate}}</p>
+        <p class="card-text">Average rate: {{totalRate}}</p>    
+</div>
+<div class="card-body-valorate">
+    <a href="/audit/auditory/{{employee._id}}/edit?employee_id={{employee._id}}" class="card-link">Edit information</a>
+</div>
+  {{!-- <div class="card-footer">
+  
+  </div> --}}
+</div>
+
 </div>
 
 <div class="container-form-rates">
 
     <div class="container-main-add">
-    <div class="container-rates">
-      <div class="info-add-rate">
-        <h2 class="h2-add">REVIEW</h2>
-      </div>
+        <div class="container-rates">
+            <div class="info-add-rate">
+                 <h2 class="h2-add">REVIEW</h2>
+            </div>
 
       <div class="container-rates-form">
         <form action="/audit/auditory/{{employee._id}}" method="POST">
@@ -176,27 +183,48 @@
 
             <input type="submit" name="submit" value="Submit" class="input-add">
         </form>
-        </div>
 
-        
+        </div>
     </div>
   </div>
-  <div class="container-card-rates">
+
+
+    <div class="container-main-valorate">
+            
+            <div class="container-employee">
+                <h2 class="h2-worker">LAST RATE</h2>
+                <p class="card-text-rates">Team Management: {{employee.rate.[0].teamManagement}}</p>
+                <p class="card-text-rates">Communication: {{employee.rate.[0].communication}}</p>
+                <p class="card-text-rates">Puntuality: {{employee.rate.[0].puntuality}}</p>
+                <p class="card-text-rates">Project execution: {{employee.rate.[0].project}}</p>
+                <p class="card-text-rates">Performance: {{employee.rate.[0].performance}}</p>
+                <p class="card-text-rates-avg"><strong>Average: {{avgRate}}</strong></p>
+            </div>
+            <div class="container-img-valorate">
+                <img src="/images/valorate.jpeg" class="img-detail-valorate">
+            </div>
+
+    </div>
+
+  {{!-- <div class="container-card-rates">
     <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-    <div class="card-header">Header</div>
+    <div class="card-header">LAST RATE</div>
     <div class="card-body">
-        <h5 class="card-title">Secondary card title</h5>
         <p class="card-text-rates">Team Management: {{employee.rate.[0].teamManagement}}</p>
         <p class="card-text-rates">Communication: {{employee.rate.[0].communication}}</p>
         <p class="card-text-rates">Puntuality: {{employee.rate.[0].puntuality}}</p>
         <p class="card-text-rates">Project execution: {{employee.rate.[0].project}}</p>
         <p class="card-text-rates">Performance: {{employee.rate.[0].performance}}</p>
-        <p class="card-text-rates">Average: {{avgRate}}</p>
+        <p class="card-text-rates-avg"><strong>Average: {{avgRate}}</strong></p>
     </div>
     </div>
-  </div>
+    <div class="container-img-valorate">
+        <img src="/images/valorate.jpeg" class="img-valorate">
+    </div>
+  </div> --}}
 
 </div>
+
 
 
 <form action="/audit/auditory/{{employee._id}}/delete" method="post">

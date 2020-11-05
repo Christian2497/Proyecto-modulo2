@@ -1,21 +1,47 @@
-<h1>{{employee.name}} {{employee.lastName}}</h1>
+<div class="body-details">
 
-<form action="/audit/auditory/{{employee._id}}/edit?employee_id={{employee._id}}" method="post" enctype="multipart/form-data">
-  <label for="">Email:</label>
-  <input type="text" name="email" value="{{employee.email}}"/>
+    <div class="photo-details">
+    <div class="title-audit">
+        <h1 class="h1-audit">{{employee.name}} {{employee.lastName}}</h1>
+    </div>
+    </div>
 
-  <label for="">Phone number: </label>
-  <input type="text" name="phone" value="{{employee.phone}}"/>
+<div class="main-audit">
+    <div class="container-main-edit-details">
+        <div class="container-edit">
+          <div class="info-add">
+            <h3 class="text-add">Edit information</h3>
+          </div>
+          <form action="/audit/auditory/{{employee._id}}/edit?employee_id={{employee._id}}" method="post" enctype="multipart/form-data">
+            {{!-- <label for="">Email:</label> --}}
+            <input type="text" name="email" class="input-add" value="{{employee.email}}"/>
+{{!-- 
+            <label for="">Phone number: </label> --}}
+            <input type="text" name="phone" class="input-add" value="{{employee.phone}}"/>
 
-  <label for="">Position:</label>
-  <input type="text" name="position" value="{{employee.position}}"/>
+            {{!-- <label for="">Position:</label> --}}
+            <input type="text" name="position" class="input-add" value="{{employee.position}}"/>
 
-  <label for="">Photo:</label>
-  <input type="file" name="img"/>
-  <input type="hidden" name="previousImg" value="{{employee.imgPath}}"/>
+            <label for="file-upload" class="subir">
+                <i class="fas fa-cloud-upload-alt"></i> Upload your photo
+            </label>
+            <input id="file-upload" onchange='cambiar()' type="file" name="img" style='display: none;'/>
+            <input type="hidden" name="previousImg" value="{{employee.imgPath}}"/>
+            <div id="info"></div>
 
-  <button type="submit">EDIT</button>
-</form>
+            <button type="submit" value="Enviar" class="input-add">EDIT</button>
+          </form>
+        </div>
+    </div> 
 
-<a href="/audit/auditory/{{employee._id}}">Return</a> 
+      <div class="container-img-edit">
+        <img class="img-edit" src="/images/workhard.jpeg">
+      </div>
 
+  </div>
+    <a href="/audit/auditory/{{employee._id}}">Return</a> 
+</div>
+{{!-- 
+            <label for="imgPerfil">Upload your photo</label>
+            <input type="file" id="imgPerfil" name="img" />
+            <input type="hidden" name="previousImg" value="{{employee.imgPath}}"/> --}}

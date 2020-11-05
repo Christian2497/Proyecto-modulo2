@@ -148,9 +148,11 @@ router.get('/audit',withAuth, async(req, res, next)=>{
 
       res.render('valorate-user', {formatDate, employee: employeeFound , avgRate: averageRate, totalRate:Math.round(totalRate/arrayVacia.length)});
     }
+
     if(employeeFound){
-        res.render('valorate-user', { formatDate, employee: employeeFound} );
+        res.render('valorate-user', {formatDate, employee: employeeFound} );
     }
+
     }catch(error) {
       next(error);
     }
