@@ -9,6 +9,8 @@
 /* -------------- NAV ---------------*/
 nav{
   display: flex;
+  position: fixed;
+  width: 100%;
   justify-content: space-around;
   align-items: center;    
   min-height: 8vh;
@@ -384,8 +386,17 @@ footer{
   body{
       overflow-x: hidden;
   }
+  nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;    
+    min-height: 8vh;
+    background-color: #353535;
+    font-family: 'Poppins', sans-serif;
+    z-index: 1;
+  }
   .nav-links{
-      position: absolute;
+      position: fixed;
       right: 0px;
       height: 92vh;
       top: 8vh;
