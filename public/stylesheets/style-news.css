@@ -1,7 +1,13 @@
 .body-new{
     width: 100%;
-    background-color: #F0EFEF;
+    background: url(/images/corcho.jpg)no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding-top: 50px;
 }
+
 .container-forms-news{
     display: flex;
     flex-direction: column;
@@ -25,6 +31,7 @@
 .container-news-events{
     display: flex;
     flex-direction: column;
+
 }
 .card-new{
     display: flex;
@@ -33,7 +40,7 @@
 }
 .card-event{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
 }
 .card{
@@ -43,6 +50,7 @@
 .fas{
     margin: 0px 10px;
 }
+
 
 .return{
     display: flex;
@@ -84,6 +92,21 @@
     justify-content: center;
     align-items: center;
 }
+.input-new{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 5px;
+    background: rgba(0,0,0,0.10);
+    outline: none;
+    border: none;
+    margin-top: 5px;
+    font-weight: bold;
+    color: #FFF;
+}
+
+
+
+
 
 
 @media screen and (min-width: 600px) {

@@ -9,15 +9,20 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/style-audit.css' />
     <link rel='stylesheet' href='/stylesheets/style-news.css' />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/font.css' />
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   </head>
   <body>
 
  <nav>
+          
+
         <div class="logo">
-            <h4>DAYADAY</h4>
+           <h3 class="h3-nav"><i class="fas fa-user-circle"></i></h3>
+            <h4 class="h4-nav">DAYADAY</h4>
         </div>
         <ul class="nav-links">
             <li><a href="/">Home</a></li>
@@ -35,7 +40,7 @@
             <li><a href="/signup">News</a></li>
              {{/if}}
             {{#if isUserLoggedIn}}
-            <li><a href="/logout">Logout</a></li>
+            <li><a href="/logout">Log out</a></li>
             {{else}}
             <li><a href="/signup">Sign up</a></li>
             <li><a href="/login">Login</a></li>
@@ -50,6 +55,7 @@
     </nav>
 
     {{{body}}}
+
 
         <footer>
         <div class="bottom">

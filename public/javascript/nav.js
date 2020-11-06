@@ -20,7 +20,7 @@ const navSlide = () => {
   }
   navSlide();
 
-  function cambiar(){
+function cambiar(){
     var pdrs = document.getElementById('file-upload').files[0].name;
     document.getElementById('info').innerHTML = pdrs;
 }
@@ -28,4 +28,18 @@ const navSlide = () => {
 function cambiar2(){
     var pdrs = document.getElementById('file-upload-events').files[0].name;
     document.getElementById('info').innerHTML = pdrs;
+}
+
+
+function ocultar(){
+    document.getElementById('mostrarOcultar').style.display="none";
+}
+function mostrar(){
+    document.getElementById('mostrarOcultar').style.display="block";
+}
+function ocultarNew(){
+    document.getElementById('mostrarOcultarNew').style.display="none";
+}
+function mostrarNew(){
+    document.getElementById('mostrarOcultarNew').style.display="block";
 }
