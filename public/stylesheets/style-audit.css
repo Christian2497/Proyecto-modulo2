@@ -611,8 +611,6 @@ transform: scale(1);
         margin: 10px;
         text-align: center;
     }
-<<<<<<< HEAD
-=======
     .container-employee-detail-rate{
         display: flex;
         background-color: #D9D9D9;
@@ -625,7 +623,6 @@ transform: scale(1);
         margin: 10px;
         text-align: center;
     }
->>>>>>> ae92127c5b918a360b3800463b62c10d6b35147d
 }
 
 @media screen and (min-width: 1000px) {
