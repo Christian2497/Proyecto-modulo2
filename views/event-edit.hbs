@@ -13,20 +13,13 @@
           <div class="info-add">
             <h3 class="text-add">Edit information</h3>
           </div>
-            <form action="/news/events/edit?events_id={{events._id}}" method="post" enctype="multipart/form-data">
+            <form action="/news/events/edit?events_id={{events._id}}" method="post" >
       
             <input type="text" name="titleEvent" class="input-add" value="{{events.titleEvent}}"><br>
             <input type="text" name="place" class="input-add" value="{{events.place}}"><br>
             <input type="date" name="date" class="input-add"  value="{{events.date}}"><br>
             <input type="time" name="time" class="input-add" value="{{events.time}}"><br>
             <input type="text" name="descriptionEvent" class="input-add" value="{{events.descriptionEvent}}"><br>
-
-            <label for="file-upload-event" class="subir">
-            <i class="fas fa-cloud-upload-alt"></i> Upload your photo
-            </label>
-            <input id="file-upload-event" onchange='cambiar()' type="file" name="img" style='display: none;'/>
-            <input type="hidden" name="previousImg" value="{{events.imgPathEvent}}"/>
-            <div id="info"></div> 
 
           <input type="submit" class="input-add" value="EDIT">
 

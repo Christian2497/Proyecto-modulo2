@@ -15,6 +15,10 @@ router.get('/news', withAuth, async (req, res, next) => {
   try {
     const news = await New.find();
     const events = await Event.find();
+
+    // var date = new Date(events.date);
+    // const formatDate = date.toLocaleDateString('es-ES');
+    
     
     res.render("news", {news, events });
   } catch (error) {
@@ -38,16 +42,14 @@ router.post('/news', withAuth, uploadCloud.single("img"),  async (req, res, next
     }
 
     if(req.body.forms === "events"){
-      const {titleEvent , place, date, time, descriptionEvent} = req.body
-      const imgPathEvent = req.file.url 
-      
+      const {titleEvent , descriptionEvent, place, date, time } = req.body
+
       await Event.create({
             titleEvent: titleEvent,
+            descriptionEvent: descriptionEvent,
             place: place,
             date: date,
             time: time,
-            descriptionEvent: descriptionEvent,
-            imgPathEvent: imgPathEvent,
         })
         res.redirect("/news");
     }
@@ -95,16 +97,10 @@ router.get("/news/events/edit", withAuth,(req, res, next) => {
   })
 });
 
-router.post("/news/events/edit",withAuth, uploadCloud.single("img"),(req, res, next) => {
-  const { title, description, place, date, time ,previousImg} = req.body;
+router.post("/news/events/edit",withAuth,(req, res, next) => {
+  const { titleEvent, descriptionEvent, place, date, time} = req.body;
 
-  if(!req.file || req.file === '' || req.file === undefined){
-     imgPathEvent = previousImg
-  }else{
-     imgPathEvent = req.file.url 
-  }
-
-  Event.updateOne({ _id: req.query.events_id }, { $set: { title, description, place, date, time , imgPathEvent} }, { new: true })
+  Event.updateOne({ _id: req.query.events_id }, { $set: { titleEvent, descriptionEvent, place, date, time } }, { new: true })
   .then((events)=>{
     res.redirect("/news");
   })

@@ -18,41 +18,39 @@
   <body>
 
  <nav>
+      <div class="logo">
+          <h3 class="h3-nav"><i class="fas fa-user-circle"></i></h3>
+          <h4 class="h4-nav">DAYADAY</h4>
+      </div>
+      <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          {{#if isUserLoggedIn}}
+          {{#unless isEmployee}}
+          <li><a href="/audit">Audit</a></li>
+          {{/unless}}
+          {{#if isEmployee}}
+          <li><a href="/profile">Perfil</a></li>
+          {{/if}}
           
-
-        <div class="logo">
-           <h3 class="h3-nav"><i class="fas fa-user-circle"></i></h3>
-            <h4 class="h4-nav">DAYADAY</h4>
-        </div>
-        <ul class="nav-links">
-            <li><a href="/">Home</a></li>
-            {{#if isUserLoggedIn}}
-            {{#unless isEmployee}}
-            <li><a href="/audit">Audit</a></li>
-            {{/unless}}
-            {{#if isEmployee}}
-            <li><a href="/profile">Perfil</a></li>
+          <li><a href="/news">News</a></li>
+          {{else}}
+          <li><a href="/signup">Audit</a></li>
+          <li><a href="/signup">News</a></li>
             {{/if}}
-            
-            <li><a href="/news">News</a></li>
-            {{else}}
-            <li><a href="/signup">Audit</a></li>
-            <li><a href="/signup">News</a></li>
-             {{/if}}
-            {{#if isUserLoggedIn}}
-            <li><a href="/logout">Log out</a></li>
-            {{else}}
-            <li><a href="/signup">Sign up</a></li>
-            <li><a href="/login">Login</a></li>
-            {{/if}}
+          {{#if isUserLoggedIn}}
+          <li><a href="/logout">Log out</a></li>
+          {{else}}
+          <li><a href="/signup">Sign up</a></li>
+          <li><a href="/login">Login</a></li>
+          {{/if}}
 
-        </ul>
-        <div class="burger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
-    </nav>
+      </ul>
+      <div class="burger">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+      </div>
+</nav>
 
     {{{body}}}
 
