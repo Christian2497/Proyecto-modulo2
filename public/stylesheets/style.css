@@ -16,6 +16,7 @@ nav{
   min-height: 8vh;
   background-color: #353535;
   font-family: 'Poppins', sans-serif;
+  z-index: 1;
 }
 
 .logo{
@@ -88,7 +89,7 @@ nav{
 .body-index h2{
   margin: 0 0 20px;
   padding: 0;
-  font-size: 48px;
+  font-size: 35px;
   text-transform: uppercase;
   color: blue;
 }
