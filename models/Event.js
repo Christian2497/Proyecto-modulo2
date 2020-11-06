@@ -5,7 +5,6 @@ const eventSchema = new Schema(
   {
     titleEvent: String,
     descriptionEvent: String,
-    // imgPathEvent: String,
     date: Date,
     time: String,
     place: String,

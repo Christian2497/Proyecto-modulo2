@@ -14,13 +14,16 @@ router.get('/news', withAuth, async (req, res, next) => {
   }
   try {
     const news = await New.find();
-    const events = await Event.find();
+    const events = await Event.find().lean();
 
-    // var date = new Date(events.date);
-    // const formatDate = date.toLocaleDateString('es-ES');
-    
-    
-    res.render("news", {news, events });
+    var eventsDate = events.map(function(event) {
+      var tmpEvent = event
+      var date = new Date(tmpEvent.date);
+      tmpEvent.date = date.toLocaleDateString('es-ES');
+      return tmpEvent;
+    });
+
+    res.render("news", {news, events , eventsDate});
   } catch (error) {
     console.log(error);
   }
@@ -87,8 +90,8 @@ router.post("/news/edit",withAuth, uploadCloud.single("img"),(req, res, next) =>
 });
 
 // Editar eventos
-router.get("/news/events/edit", withAuth,(req, res, next) => {
-  Event.findOne({ _id: req.query.events_id})
+router.get("/news/events/edit", withAuth,(req, res, next) => { 
+Event.findOne({ _id: req.query.events_id})
   .then((events) => {
     res.render('event-edit', {events});
   })
