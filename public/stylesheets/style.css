@@ -101,7 +101,11 @@ nav{
   padding: 0;
   font-size: 35px;
   text-transform: uppercase;
+<<<<<<< HEAD
   color: #2079B0;
+=======
+  color: #2079b0;
+>>>>>>> ae92127c5b918a360b3800463b62c10d6b35147d
 }
 
 .body-index p{
@@ -383,6 +387,11 @@ footer{
     display: flex;
     flex-direction: row;
   }
+ .logo-pagina{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+ }
 }
 
 @media screen and (max-width: 900px){
@@ -398,6 +407,7 @@ footer{
   .main-content .box{
       margin: 5px 0;
   }
+ 
 }
 
 @media screen and (max-width:768px){
