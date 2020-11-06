@@ -383,6 +383,11 @@ footer{
     display: flex;
     flex-direction: row;
   }
+ .logo-pagina{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+ }
 }
 
 @media screen and (max-width: 900px){
@@ -398,6 +403,7 @@ footer{
   .main-content .box{
       margin: 5px 0;
   }
+ 
 }
 
 @media screen and (max-width:768px){
