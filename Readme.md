@@ -219,7 +219,6 @@ Proyecto-modulo-2/
     - place
     - date
     - time
-    - imgPath
 - POST /news/:id(news id)/delete
   - Delete New
   - Redirect /news when new is deletted
@@ -269,13 +268,12 @@ Proyecto-modulo-2/
    {
       titleEvent: String,
       descriptionEvent: String,
-      imgPathEvent: String,
       date: Date,
       time: String,
       place: String,
     },
   ```
-
+  
 - New
 
 ```
